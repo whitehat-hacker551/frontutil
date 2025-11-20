@@ -3,10 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from '../../../service/blog';
 import { IBlog } from '../../../model/blog';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UnroutedAdminView } from "../unrouted-admin-view/unrouted-admin-view";
 
 @Component({
   selector: 'app-routed-admin-remove',
-  imports: [],
+  imports: [UnroutedAdminView],
   templateUrl: './routed-admin-remove.html',
   styleUrl: './routed-admin-remove.css'
 })

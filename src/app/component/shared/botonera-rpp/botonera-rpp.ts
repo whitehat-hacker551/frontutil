@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { rpp } from '../../../environment/environment';
 
 @Component({
     selector: 'app-botonera-rpp',
@@ -9,7 +10,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class BotoneraRpp {
 
     @Input() numRpp: number = 5;
-    @Input() options: number[] = [5, 10, 20, 50];
+    @Input() options: number[] = rpp;
     @Output() rppChange = new EventEmitter<number>();
 
     setRpp(n: number) {

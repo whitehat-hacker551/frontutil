@@ -29,13 +29,17 @@ export class RoutedAdminNew implements OnInit {
       titulo: ['', [
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(200)
+        Validators.maxLength(1024)
       ]],
       contenido: ['', [
         Validators.required,
-        Validators.minLength(10)
+        Validators.minLength(3),
       ]],
-      etiquetas: ['', [Validators.maxLength(100)]],
+      etiquetas: ['', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(1024)
+      ]],
     });
   }
 
