@@ -45,7 +45,7 @@ export const routes: Routes = [
   { path: 'sempertegui/view/:id', component: SemperteguiRoutedAdminView},
   { path: 'sempertegui/edit/:id', component: SemperteguiRoutedAdminEdit },
   { path: 'sempertegui/remove/:id', component: SemperteguiRoutedAdminRemove },
-  { path: 'sempertegui/new', component: SemperteguiRoutedAdminNew }
+  { path: 'sempertegui/new', component: SemperteguiRoutedAdminNew },
   { path: 'alcanyiz', component: RoutedAlcanyizMenu },
   { path: 'alcanyiz/allquestion', component: RoutedAlcanyizUserList },
   { path: 'alcanyiz/question/:id', component: RoutedAlcanyizUserView },
