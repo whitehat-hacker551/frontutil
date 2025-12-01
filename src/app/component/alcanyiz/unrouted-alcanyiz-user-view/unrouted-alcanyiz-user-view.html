@@ -1,0 +1,24 @@
+<div class="quiz-container">
+	<div class="quiz-card">
+	  <a class="back-link" href="/alcanyiz/allquestion">Volver a las preguntas</a>
+		<h2 class="quiz-question">{{ oQuestion?.question }}</h2>
+		<form class="quiz-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+			<div *ngFor="let opt of options" class="choice-row">
+				<label class="choice-label">
+					<input type="radio" [value]="opt.index" formControlName="selected" />
+					<span class="choice-text">{{ opt.text }}</span>
+				</label>
+			</div>
+
+			<div class="submit-row">
+				<button type="submit" class="btn-submit">Responder</button>
+			</div>
+		</form>
+
+		<div *ngIf="result === 'correct'" class="result result-correct">Correcto!</div>
+		<div *ngIf="result === 'incorrect'" class="result result-incorrect">
+			Incorrecto. La respuesta correcta es: <span class="correct-text">{{ correctAnswerText }}</span>
+		</div>
+	</div>
+</div>
+

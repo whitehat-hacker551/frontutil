@@ -1,0 +1,84 @@
+/* Minimal visual menu for Alcanyiz
+   - Primary blues for background and accents
+   - Orange for important highlights
+   - Clean, centered layout, large tappable buttons
+*/
+/* Colors inlined (no :root variables) */
+/* bg: #0f1724, panel: #0b1220, primary: #1e90ff, primary-2: #0ea5e9, accent: #ff8a00 */
+body { background: #05112b }
+
+.main-links{
+  max-width: 100vw;
+  padding: 148px 24px;
+  background: #05112b;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+  text-align:center;
+}
+
+.main-links h2{
+  font-size: 88px;
+  letter-spacing: -1px;
+  margin: 0 0 22px 0;
+  color: #1e90ff;
+  font-weight: 700;
+  text-shadow: 2px 2px 0px rgb(17, 90, 163);
+}
+
+.container-links{
+  display:flex;
+  justify-content:center;
+}
+
+.container-link{
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
+
+.button-seccion{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:220px;
+  padding:18px 28px;
+  border-radius:22px;
+  background: linear-gradient(180deg,#1e90ff, #0ea5e9);
+  color: white;
+  text-decoration:none;
+  font-weight:600;
+  font-size:18px;
+  box-shadow: 0 7px 0px rgb(17, 90, 163);
+}
+
+.button-seccion:hover{
+  transform: translateY(7px);
+  box-shadow: none;
+}
+
+.button-seccion:active{
+  transform: translateY(-1px) scale(.995);
+}
+
+/* alternate button style for 'important' orange action */
+.button-seccion.important{
+  background: linear-gradient(180deg,#ff8a00, #ff6f00);
+  color: #071024;
+  box-shadow: 0 7px 0px rgb(104, 63, 16);
+}
+
+.button-seccion.important:hover{
+  transform: translateY(7px);
+  box-shadow: none;
+  background: linear-gradient(180deg,#ff8a00, #ff6f00);
+  color: #071024;
+  box-shadow: none;
+}
+
+/* make links more prominent on small screens */
+@media (max-width:640px){
+  .main-links{ padding:32px 18px; border-radius:12px; }
+  .main-links h2{ font-size:36px }
+  .container-link{ flex-direction:column; gap:12px }
+  .button-seccion{ min-width:100%; font-size:16px }
+}

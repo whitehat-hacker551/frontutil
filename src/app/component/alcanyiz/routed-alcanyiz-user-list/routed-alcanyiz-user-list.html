@@ -1,0 +1,44 @@
+<div class="container my-3 front-plist container-list">
+  <div class="d-flex flex-row flex-md-row justify-content-between align-items-center mb-3">
+    <div class="d-flex align-items-center">
+      <h1 class="h2 mb-0">
+        Estas son todas las preguntas del Questionario
+      </h1>
+    </div>
+
+    <div class="d-flex align-items-center mt-2 mt-md-0">
+      <a
+        class="p-3 d-inline"  style="background-color: white; color: black; text-decoration: none; border-radius: 5px;"
+        href="/alcanyiz/questionlist"
+        title="Mantenimiento del blog"
+      >
+        <!-- gear icon -->
+        Mantenimiento
+      </a>
+      <!-- small screens: compact maintenance icon-only button -->
+    </div>
+  </div>
+
+  <div class="list">
+    <div class="alc-list-container">
+      <div *ngFor="let oQuestion of oPage?.content" class="post-row mt-4">
+        <div class="post-item">
+          <div class="post-card">
+            <app-unrouted-alcanyiz-user-view2 [oQuestion]="oQuestion"> </app-unrouted-alcanyiz-user-view2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center mt-5">
+
+      <app-paginacion
+        [numPage]="numPage"
+        [numPages]="oPage?.totalPages || 1"
+        (pageChange)="goToPage($event)"
+      >
+      </app-paginacion>
+    </div>
+
+</div>

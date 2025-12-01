@@ -1,0 +1,61 @@
+
+/* Remove post view: dark background consistent with admin theme */
+.remove-post{ background:#050b18; padding:28px 12px; border-radius:12px; color:#e6eef9 }
+.remove-post .confirm-box{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:8px; border:1px solid rgba(255,255,255,0.03); color:#dff3ff }
+.remove-post .confirm-box h2{ color:#e6eef9 }
+.remove-post .confirm-box .text-muted{ color: rgba(230,238,249,0.75) }
+.remove-section{
+  background-color: #0b1220;
+  border-radius: 20px;
+  color: white;
+  padding: 40px 30px;
+}
+.btn-outline-secondary{ color:#d7e9ff; border-color: rgba(255,255,255,0.06) }
+
+.btn-remove{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:220px;
+  padding:18px 28px;
+  border-radius:22px;
+  background: rgb(228, 42, 42);
+  color: white;
+  border:none;
+  text-decoration:none;
+  font-weight:600;
+  font-size:18px;
+  box-shadow: 0 7px 0px rgb(153, 15, 15);
+}
+
+.btn-remove:hover{
+  transform: translateY(7px);
+  box-shadow: none;
+}
+
+.btn-cancel-remove{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:220px;
+  padding:18px 28px;
+  border-radius:22px;
+  background: linear-gradient(180deg,#1e90ff, #0ea5e9);
+  color: white;
+  border: none;
+  text-decoration:none;
+  font-weight:600;
+  font-size:18px;
+  box-shadow: 0 7px 0px rgb(17, 90, 163);
+}
+
+.btn-cancel-remove:hover{
+  transform: translateY(7px);
+  box-shadow: none;
+}
+
+@media (max-width:768px){
+	.remove-post{ padding:16px }
+	.confirm-box{ padding:14px }
+	.btn-remove{ min-width:120px; padding:8px 12px }
+}

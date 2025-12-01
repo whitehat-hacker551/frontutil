@@ -1,0 +1,45 @@
+<div class="container-table">
+<table class="table">
+  <thead class="thead">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="row">{{ oQuestion?.id }}</th>
+    </tr>
+    <tr>
+      <th scope="col">Question</th>
+      <td>{{ oQuestion?.question }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="align-middle">1st Question</th>
+      <td>{{ oQuestion?.answer1 }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="align-middle">2nd Question</th>
+      <td>{{ oQuestion?.answer2 }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="align-middle">3rd Question</th>
+      <td>{{ oQuestion?.answer3 }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="align-middle">4th Question</th>
+      <td>{{ oQuestion?.answer4 }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="align-middle">Correct Question</th>
+      <td>{{ oQuestion?.correct }}</td>
+    </tr>
+    <tr>
+      <th scope="col">Creation Date</th>
+      <td>{{ oQuestion?.create_date }}</td>
+    </tr>
+    <tr>
+      <th scope="col">Update Date</th>
+      <td>{{ oQuestion?.modify_date}}</td>
+    </tr>
+  </thead>
+</table>
+<div>
+  <a class="button-seccion" href="alcanyiz/questionlist">Tabla Preguntas</a>
+</div>
+</div>

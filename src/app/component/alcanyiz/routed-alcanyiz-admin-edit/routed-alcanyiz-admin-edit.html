@@ -1,0 +1,102 @@
+<div class="container my-4 edit-form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-card">
+        <header class="form-header mb-4">
+          <h1 class="form-title" style="font-size: 40px;">Edit Question</h1>
+        </header>
+
+        @if (loading) {
+        <div class="d-flex justify-content-center my-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        }
+
+        @if (error) {
+        <div class="alert alert-danger" role="alert">
+          <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+        </div>
+        }
+
+        @if (!loading && !error) {
+        <form [formGroup]="questionForm" (ngSubmit)="onSubmit()" novalidate>
+          <!-- Título -->
+          <div class="mb-4">
+            <label for="question" class="form-label">Título <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="question?.invalid && question?.touched"
+              [class.is-valid]="question?.valid && question?.touched"
+              id="question"
+              formControlName="question"
+              placeholder="Introduce el título del post"
+            />
+            @if (question?.invalid && question?.touched) {
+            <div class="invalid-feedback">
+              @if (question?.errors?.['required']) {
+                <span>El título es obligatorio.</span>
+              }
+              @if (question?.errors?.['minlength']) {
+                <span>El título debe tener al menos 3 caracteres.</span>
+              }
+              @if (question?.errors?.['maxlength']) {
+                <span>El título no puede superar 200 caracteres.</span>
+              }
+            </div>
+            }
+          </div>
+
+          <!-- Respuestas -->
+          <div class="mb-3">
+            <label class="form-label">Respuesta 1 <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" formControlName="answer1" required/>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Respuesta 2 <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" formControlName="answer2" required/>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Respuesta 3 <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" formControlName="answer3" required/>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Respuesta 4 <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" formControlName="answer4" required/>
+          </div>
+
+          <!-- Correcta -->
+          <div class="mb-4">
+            <label class="form-label">Respuesta correcta</label>
+            <select class="form-select" formControlName="correct">
+              <option [value]="1">1</option>
+              <option [value]="2">2</option>
+              <option [value]="3">3</option>
+              <option [value]="4">4</option>
+            </select>
+          </div>
+
+          <!-- Botones -->
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <a [routerLink]="['/alcanyiz/questionlist']" class="btn-cancelar">
+              Cancelar
+            </a>
+            <button
+              type="submit"
+              class="btn-enviar"
+              [disabled]="submitting || questionForm.invalid"
+            >
+              @if (submitting) {
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              }
+              Guardar Cambios
+            </button>
+          </div>
+        </form>
+        }
+      </div>
+    </div>
+  </div>
+</div>

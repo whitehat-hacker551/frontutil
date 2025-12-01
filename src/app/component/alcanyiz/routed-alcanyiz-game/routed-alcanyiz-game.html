@@ -1,0 +1,46 @@
+<div class="container-game">
+  <h2>Learning Route</h2>
+  <div class="game-head">Puntuación: <strong>{{ score }}</strong></div>
+  <div class="learning-route">
+    <button class="button-class class-n1" (click)="openDialog(0)" [disabled]="completed[0]">1</button>
+    <button class="button-class class-n2" (click)="openDialog(1)" [disabled]="completed[1]">2</button>
+    <button class="button-class class-n3" (click)="openDialog(2)" [disabled]="completed[2]">3</button>
+    <button class="button-class class-n4" (click)="openDialog(3)" [disabled]="completed[3]">4</button>
+    <button class="button-class class-n5" (click)="openDialog(4)" [disabled]="completed[4]">5</button>
+    <button class="button-class class-n6" (click)="openDialog(5)" [disabled]="completed[5]">6</button>
+    <button class="button-class class-n7" (click)="openDialog(6)" [disabled]="completed[6]">7</button>
+    <button class="button-class class-n8" (click)="openDialog(7)" [disabled]="completed[7]">8</button>
+    <button class="button-class class-n9" (click)="openDialog(8)" [disabled]="completed[8]">9</button>
+  </div>
+
+  <!-- Inline modal dialog -->
+  <div class="game-dialog-backdrop" *ngIf="dialogOpen">
+    <div class="game-dialog">
+      <div class="dialog-header">
+        <h3>Pregunta {{ currentQ + 1 }} / {{ dialogQuestions.length }}</h3>
+        <div class="dialog-score">Puntuación: {{ score }}</div>
+      </div>
+      <div class="dialog-body" *ngIf="dialogQuestions.length">
+        <p class="q-text">{{ dialogQuestions[currentQ]?.text }}</p>
+        <div class="choices">
+          <button class="choice" *ngFor="let c of dialogQuestions[currentQ]?.choices; let i = index" (click)="selectChoice(i)" [class.selected]="selectedChoice === i">{{ c }}</button>
+        </div>
+      </div>
+      <div class="dialog-actions">
+        <button class="btn btn-primary" (click)="submitAnswer()">Siguiente</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Final results overlay -->
+  <div class="results-backdrop" *ngIf="allCompleted" >
+    <div class="results-menu">
+      <h3>Resultados</h3>
+      <p class="big-score">Puntuación final: <strong>{{ score }}</strong></p>
+      <div class="results-actions">
+    <button class="btn btn-primary" (click)="goToMenu()">Volver al menú</button>
+      </div>
+    </div>
+  </div>
+
+</div>
