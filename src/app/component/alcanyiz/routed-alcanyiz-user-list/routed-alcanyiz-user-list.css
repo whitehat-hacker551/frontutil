@@ -1,0 +1,16 @@
+h1{
+  color: white;
+}
+/* Alcanyiz user list: dark cards, readable text */
+.alc-list-container{ max-width:1100px; margin:12px auto; padding:8px }
+.post-card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:12px; border-radius:10px; box-shadow:0 10px 30px rgba(2,6,23,0.45); color:#e6eef9 }
+.post-row{ margin-bottom:14px }
+.post-item{ display:block }
+.container-list{
+  background-color: #071024;
+  padding: 30px;
+  border-radius: 20px;
+}
+@media (max-width:768px){
+	.alc-list-container{ padding:6px }
+}

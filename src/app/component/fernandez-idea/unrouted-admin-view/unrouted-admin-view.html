@@ -1,0 +1,55 @@
+<div class="container my-4 edit-form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-card">
+        <h1 class="my-5">Detalle de Idea</h1>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="row">{{ oIdea()?.id }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Título</th>
+              <td>{{ oIdea()?.titulo }}</td>
+            </tr>
+            <tr>
+              <th scope="col" class="align-middle">Comentario</th>
+              <td>{{ oIdea()?.comentario }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Categoría</th>
+              <td>
+                <span class="badge" 
+                  [class.bg-primary]="oIdea()?.categoria === 'IDEA'"
+                  [class.bg-success]="oIdea()?.categoria === 'MEJORA'"
+                  [class.bg-danger]="oIdea()?.categoria === 'BUG'">
+                  {{ oIdea()?.categoria }}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">Público</th>
+              <td>
+                @if (oIdea()?.publico) {
+                  <i class="bi bi-check-circle-fill text-success"></i> Sí
+                } @else {
+                  <i class="bi bi-x-circle-fill text-danger"></i> No
+                }
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">Fecha Creación</th>
+              <td>{{ oIdea()?.fechaCreacion }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Fecha Modificación</th>
+              <td>{{ oIdea()?.fechaModificacion }}</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

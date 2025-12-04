@@ -1,0 +1,36 @@
+.container-view{
+  padding: 20px;
+}
+
+h1{
+  margin-bottom: 40px;
+}
+
+.date-publi{
+  color: azure;
+}
+
+p{
+  margin-left: 20px;
+}
+
+.button-seccion{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:120px;
+  padding:18px 28px;
+  border-radius:22px;
+  border:none;
+  background: linear-gradient(180deg,#1e90ff, #0ea5e9);
+  color: white;
+  text-decoration:none;
+  font-weight:600;
+  font-size:18px;
+  box-shadow: 0 7px 0px rgb(17, 90, 163);
+}
+
+.button-seccion:hover{
+  transform: translateY(7px);
+  box-shadow: none;
+}

@@ -23,6 +23,28 @@
 
     <footer>
       <div class="row g-3">
+        @if (oCalinescu && oCalinescu.precio !== null && oCalinescu.precio !== undefined && oCalinescu.precio > 0) {
+        <div class="col-12">
+          <div class="d-flex align-items-center">
+            <i class="bi bi-currency-euro text-success fs-4 me-2"></i>
+            <div>
+              <small class="d-block text-uppercase fw-semibold text-muted" style="font-size: 0.7rem;">Precio estimado</small>
+              <span class="fs-5 fw-bold text-success">{{ oCalinescu?.precio | number: '1.2-2' }} €</span>
+            </div>
+          </div>
+        </div>
+        }
+        @if (oCalinescu && oCalinescu.cantidad) {
+        <div class="col-12">
+          <div class="d-flex align-items-center">
+            <i class="bi bi-123 text-primary fs-4 me-2"></i>
+            <div>
+              <small class="d-block text-uppercase fw-semibold text-muted" style="font-size: 0.7rem;">Cantidad</small>
+              <span class="fs-5 fw-bold text-primary">{{ oCalinescu?.cantidad }} {{ oCalinescu?.cantidad === 1 ? 'unidad' : 'unidades' }}</span>
+            </div>
+          </div>
+        </div>
+        }
         @if (oCalinescu?.fecha_compra_esperada) {
         <div class="col-12 col-md-6">
           <div class="d-flex align-items-center text-muted">

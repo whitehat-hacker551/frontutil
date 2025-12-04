@@ -1,0 +1,44 @@
+<div class="container m-5 post-view">
+  @if (!oCastanyera) {
+  <div class="alert alert-warning" role="alert">Esta publicación es privada o no existe.</div>
+  } @else {
+  <article class="post-card p-5 border rounded shadow-sm">
+    <header class="post-header my-5">
+      <h1 class="post-title">{{ oCastanyera.titulo }}</h1>
+    </header>
+
+    <section class="post-content my-5">
+      <!-- icono de comillas -->
+      <i class="bi bi-quote"></i>
+      <p [innerHTML]="oCastanyera.contenido"></p>
+    </section>
+
+    <footer class="post-footer my-5 d-flex justify-content-between align-items-center">
+      <div class="post-meta text-muted small">
+        <span class="me-3">
+          <i class="bi bi-calendar3"></i>
+          Publicado el
+          {{ oCastanyera.fecha_creacion | datetime : 'solofechacompleta' }} a las
+          {{ oCastanyera.fecha_creacion | datetime : 'solohora' }}
+        </span>
+        @if (oCastanyera.fecha_modificacion) {
+        <span class="me-3">
+          <i class="bi bi-clock"></i>
+          Modificado el
+          {{ oCastanyera.fecha_modificacion | datetime : 'solofechacompleta' }} a las
+          {{ oCastanyera.fecha_modificacion | datetime : 'solohora' }}
+        </span>
+        }
+      </div>
+      <div class="post-meta text-muted small">
+        <span class="tags"><i class="bi bi-tags"></i> {{ oCastanyera.etiquetas }}</span>
+        &nbsp; @if (oCastanyera.publico) {
+        <span class="badge bg-success ms-3">Público</span>
+        } @else {
+        <span class="badge bg-secondary ms-3">Privado</span>
+        }
+      </div>
+    </footer>
+  </article>
+  }
+</div>

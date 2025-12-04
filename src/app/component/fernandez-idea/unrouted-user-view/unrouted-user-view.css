@@ -1,0 +1,24 @@
+/* Estilos específicos para la vista de usuario */
+
+.card.my-3{
+	border-radius: 14px;
+	overflow: hidden;
+	transition: transform .18s ease, box-shadow .18s ease;
+}
+.card.my-3:hover{
+	transform: translateY(-6px) scale(1.01);
+	box-shadow: 0 14px 30px rgba(15,23,42,0.12);
+}
+
+.card-body h5{ font-weight:700; color: #111827; }
+.card .badge{ font-weight:600; }
+
+.text-muted small{ color: var(--muted); }
+
+.btn-sm.btn-outline-primary{
+	border-radius: 20px;
+	padding-left: 0.8rem; padding-right:0.8rem;
+}
+
+.badge.bg-success{ background: linear-gradient(90deg,var(--accent-2), #2dd4bf); }
+

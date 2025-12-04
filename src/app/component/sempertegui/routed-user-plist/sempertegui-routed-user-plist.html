@@ -1,0 +1,42 @@
+<div class="container my-3 front-plist">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3 p-4 header">
+    <div class="d-flex align-items-center">
+      <h1 class="h4 mb-0">
+        <i class="bi bi-film me-2"></i>
+        Mi Catálogo de Películas Favoritas
+      </h1>
+    </div>
+
+    <div class="d-flex align-items-center mt-2 mt-md-0">
+      <a
+        class="btn btn-outline-light btn-sm me-3 d-md-inline-flex align-items-center"
+        href="/sempertegui/plist"
+        title="Mantenimiento del catálogo de películas"
+      >
+        <i class="bi bi-gear-wide-connected me-2" aria-hidden="true"></i>
+        Mantenimiento
+      </a>
+    </div>
+  </div>
+
+  <div class="list">
+    @for (movie of oPage?.content; track movie.id ) {
+      <div class="post-row mt-5">
+        <div class="post-item">
+          <app-movie-card [movie]="movie"> </app-movie-card>
+        </div>
+      </div>
+    } @empty {
+      <p class="no-movies-msg">No hay películas en el catálogo todavía.</p>
+    }
+  </div>
+
+  <div class="d-flex justify-content-center mt-5">
+      <app-paginacion
+        [numPage]="numPage"
+        [numPages]="oPage?.totalPages || 1"
+        (pageChange)="goToPage($event)"
+      >
+      </app-paginacion>
+    </div>
+</div>

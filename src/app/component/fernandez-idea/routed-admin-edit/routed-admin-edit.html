@@ -1,0 +1,139 @@
+<div class="container my-4 edit-form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-card">
+        <header class="form-header mb-4">
+          <h1 class="form-title">Editar Idea</h1>
+          <p class="text-muted small">Modifica los campos de la idea</p>
+        </header>
+
+        @if (loading) {
+        <div class="d-flex justify-content-center my-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+        </div>
+        }
+
+        @if (error) {
+        <div class="alert alert-danger" role="alert">
+          <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+        </div>
+        }
+
+        @if (!loading && !error) {
+        <form [formGroup]="ideaForm" (ngSubmit)="onSubmit()" novalidate>
+          <!-- Título -->
+          <div class="mb-4">
+            <label for="titulo" class="form-label">Título <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="titulo?.invalid && titulo?.touched"
+              [class.is-valid]="titulo?.valid && titulo?.touched"
+              id="titulo"
+              formControlName="titulo"
+              placeholder="Introduce el título de la idea"
+            />
+            @if (titulo?.invalid && titulo?.touched) {
+            <div class="invalid-feedback">
+              @if (titulo?.errors?.['required']) {
+                <span>El título es obligatorio.</span>
+              }
+              @if (titulo?.errors?.['minlength']) {
+                <span>El título debe tener al menos 1 carácter.</span>
+              }
+              @if (titulo?.errors?.['maxlength']) {
+                <span>El título no puede superar 255 caracteres.</span>
+              }
+            </div>
+            }
+          </div>
+
+          <!-- Comentario -->
+          <div class="mb-4">
+            <label for="comentario" class="form-label">Comentario <span class="text-danger">*</span></label>
+            <textarea
+              class="form-control"
+              [class.is-invalid]="comentario?.invalid && comentario?.touched"
+              [class.is-valid]="comentario?.valid && comentario?.touched"
+              id="comentario"
+              formControlName="comentario"
+              rows="8"
+              placeholder="Escribe el comentario de la idea"
+            ></textarea>
+            @if (comentario?.invalid && comentario?.touched) {
+            <div class="invalid-feedback">
+              @if (comentario?.errors?.['required']) {
+                <span>El comentario es obligatorio.</span>
+              }
+              @if (comentario?.errors?.['minlength']) {
+                <span>El comentario debe tener al menos 1 carácter.</span>
+              }
+            </div>
+            }
+          </div>
+
+          <!-- Categoría -->
+          <div class="mb-4">
+            <label for="categoria" class="form-label">Categoría <span class="text-danger">*</span></label>
+            <select
+              class="form-select"
+              [class.is-invalid]="categoria?.invalid && categoria?.touched"
+              [class.is-valid]="categoria?.valid && categoria?.touched"
+              id="categoria"
+              formControlName="categoria"
+            >
+              <option value="IDEA">IDEA</option>
+              <option value="MEJORA">MEJORA</option>
+              <option value="BUG">BUG</option>
+            </select>
+            @if (categoria?.invalid && categoria?.touched) {
+            <div class="invalid-feedback">
+              @if (categoria?.errors?.['required']) {
+                <span>La categoría es obligatoria.</span>
+              }
+            </div>
+            }
+          </div>
+
+          <!-- Público -->
+          <div class="mb-4">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="publico"
+                formControlName="publico"
+              />
+              <label class="form-check-label" for="publico">
+                Idea pública (visible para todos los usuarios)
+              </label>
+            </div>
+          </div>
+
+          <!-- Botones -->
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <a [routerLink]="['/fernandez-idea/admin/plist']" class="btn btn-outline-secondary">
+              <i class="bi bi-arrow-left me-2"></i>Cancelar
+            </a>
+            <button 
+              type="submit" 
+              class="btn btn-primary"
+              [disabled]="submitting || ideaForm.invalid"
+            >
+              @if (submitting) {
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              }
+              @if (!submitting) {
+                <i class="bi bi-check-circle me-2"></i>
+              }
+              Guardar Cambios
+            </button>
+          </div>
+        </form>
+        }
+      </div>
+    </div>
+  </div>
+</div>

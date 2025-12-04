@@ -1,0 +1,30 @@
+<!-- Yo muestro las preguntas agrupadas por tema, permitiendo expandir cada grupo para ver las preguntas -->
+<div class="container mt-4">
+    <div class="header-section mb-5">
+        <div class="header-content">
+            <h1 class="title-main text-center">
+                <i class="bi bi-chat-heart"></i> Preguntas al Universo
+            </h1>
+            <p class="subtitle-main text-center">
+                <span class="subtitle-main text-start">Preguntas agrupadas por tema</span>
+            </p>
+        </div>
+    </div>
+    <div *ngFor="let tema of temas(); let i = index" class="tema-card mb-4 card-question">
+        <div class="card-header-question" (click)="toggleExpand(i)" style="cursor:pointer;">
+            <strong>{{ tema.tema | titlecase }}</strong>
+            <span class="badge bg-primary ms-2">{{ tema.preguntas.length }} preguntas</span>
+            <span class="ms-auto" style="cursor:pointer">
+                <i class="bi" [class.bi-chevron-down]="!tema.expanded" [class.bi-chevron-up]="tema.expanded"></i>
+            </span>
+        </div>
+        <div *ngIf="tema.expanded" class="preguntas-list mt-2 animate-expand">
+            <div class="mb-2 text-secondary">Aquí puedes ver todas las preguntas agrupadas por el tema seleccionado.
+            </div>
+            <div *ngFor="let pregunta of tema.preguntas" class="pregunta-item border-bottom py-2">
+                <span class="fw-bold">{{ pregunta.preguntas }}</span>
+                <span class="text-muted ms-2">{{ pregunta.fechaCreacion }}</span>
+            </div>
+        </div>
+    </div>
+</div>

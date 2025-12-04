@@ -1,0 +1,12 @@
+.table th {
+  cursor: pointer;
+}
+
+.table th i {
+  font-size: 0.8rem;
+  margin-left: 0.25rem;
+}
+
+.card {
+  border-radius: 1rem;
+}

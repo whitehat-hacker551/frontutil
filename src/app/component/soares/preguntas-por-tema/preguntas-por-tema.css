@@ -1,0 +1,145 @@
+/* Yo centro y limito el ancho del contenido principal en la página */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+/* Unificar estilos con usuario plist */
+/* Yo doy estilo de tarjeta y color a los bloques de preguntas y temas */
+.tema-card, .card-question {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  position: relative;
+  margin-bottom: 25px;
+  transition: transform 0.3s cubic-bezier(.4,2,.3,1), box-shadow 0.3s cubic-bezier(.4,2,.3,1);
+}
+/* Cuando pasas el mouse, hago que la tarjeta se destaque */
+.tema-card:hover, .card-question:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+/* Yo pinto la cabecera de cada tarjeta y la hago interactiva */
+.card-header-question {
+  background-color: #9a8c98;
+  color: #22223b;
+  padding: 15px 20px;
+  border-radius: 15px 15px 0 0;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+/* Al pasar el mouse, cambio el fondo de la cabecera */
+.card-header-question:hover {
+  background: #f2e9e4;
+}
+/* Yo agrupo las preguntas dentro de una tarjeta y las separo visualmente */
+.preguntas-list {
+  margin-top: 0.5rem;
+  padding: 20px;
+  background: #fff;
+  border-radius: 0 0 15px 15px;
+}
+/* Yo muestro cada pregunta en una fila y las separo con líneas */
+.pregunta-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  padding: 10px 0;
+}
+/* Yo separo visualmente las preguntas dentro de la lista */
+.pregunta-item:not(:last-child) {
+  border-bottom: 1px solid #c9ada7;
+}
+/* Yo hago que el título de la pregunta sea grande y llamativo */
+.question-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4a4e69;
+  margin-bottom: 15px;
+}
+/* Yo muestro el texto de la pregunta con buen espaciado y color legible */
+.question-body {
+  font-size: 1rem;
+  color: #22223b;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+/* Yo pongo información extra (autor, fecha) debajo de la pregunta */
+.question-footer {
+  border-top: 1px solid #c9ada7;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #9a8c98;
+}
+/* Yo resalto el nombre del autor en el pie de la pregunta */
+.question-footer .author {
+  font-weight: 600;
+  color: #4a4e69;
+}
+/* Yo pongo la fecha en cursiva en el pie de la pregunta */
+.question-footer .date {
+  font-style: italic;
+}
+/* Yo hago una animación suave al expandir preguntas */
+.animate-expand {
+  animation: expandFade 0.3s;
+}
+/* Animación para mostrar preguntas con efecto de expansión y desvanecimiento */
+@keyframes expandFade {
+  from { opacity: 0; transform: scaleY(0.95); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+.preguntas-list {
+  margin-top: 0.5rem;
+  padding: 20px;
+  background: #fff;
+  border-radius: 0 0 15px 15px;
+}
+.pregunta-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  padding: 10px 0;
+}
+.pregunta-item:not(:last-child) {
+  border-bottom: 1px solid #c9ada7;
+}
+.question-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4a4e69;
+  margin-bottom: 15px;
+}
+.question-body {
+  font-size: 1rem;
+  color: #22223b;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.question-footer {
+  border-top: 1px solid #c9ada7;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #9a8c98;
+}
+.question-footer .author {
+  font-weight: 600;
+  color: #4a4e69;
+}
+.question-footer .date {
+  font-style: italic;
+}

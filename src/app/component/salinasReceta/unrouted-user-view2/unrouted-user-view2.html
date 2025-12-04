@@ -1,0 +1,17 @@
+<div class="front-view-post d-flex flex-column flex-md-row align-items-start">
+  <div class="content flex-fill">
+    <h1 class="title">{{ oSalinasReceta?.nombre }}</h1>
+    <small class="text-muted me-3">Ingredientes: {{ oSalinasReceta?.ingredientes }}</small>
+    <p class="excerpt">{{ oSalinasReceta?.preparacion ?? '' | trim : 150 }}</p>
+    <div class="excerpt">
+      <a [routerLink]="['/receta/post', oSalinasReceta?.id]" class="btn btn-sm btn-outline-primary">Leer</a>
+    </div>
+    <div class="d-flex justify-content-end">
+      <small class="text-muted me-3">
+        Publicado el {{ oSalinasReceta?.fechaCreacion | datetime : 'solofechacompleta' }}
+        a las {{ oSalinasReceta?.fechaCreacion | datetime : 'solohora' }}
+      </small>
+    </div>
+
+  </div>
+</div>

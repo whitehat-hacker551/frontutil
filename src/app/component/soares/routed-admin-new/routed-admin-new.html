@@ -1,0 +1,56 @@
+<!-- Yo muestro el formulario para crear una nueva pregunta, con validaciones y botones para enviar o volver -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Crear Nueva Pregunta al Universo</h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="soaresForm" (ngSubmit)="onSubmit()">
+                        <!-- Campo Pregunta -->
+                        <div class="mb-3">
+                            <label for="preguntas" class="form-label">Pregunta</label>
+                            <input type="text" class="form-control" id="preguntas" formControlName="preguntas"
+                                placeholder="Escribe tu pregunta aquí">
+                            <div *ngIf="soaresForm.get('preguntas')?.invalid && (soaresForm.get('preguntas')?.dirty || soaresForm.get('preguntas')?.touched)"
+                                class="text-danger mt-1">
+                                <div *ngIf="soaresForm.get('preguntas')?.errors?.['required']">
+                                    La pregunta es obligatoria.
+                                </div>
+                                <div *ngIf="soaresForm.get('preguntas')?.errors?.['minlength']">
+                                    La pregunta debe tener al menos 3 caracteres.
+                                </div>
+                                <div *ngIf="soaresForm.get('preguntas')?.errors?.['maxlength']">
+                                    La pregunta no puede exceder los 255 caracteres.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Solo campo Pregunta, cuerpo eliminado -->
+
+                        <!-- Campo Publicación -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="publicacion"
+                                formControlName="publicacion">
+                            <label class="form-check-label" for="publicacion">Publicar Inmediatamente</label>
+                        </div>
+
+                        <div *ngIf="error" class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary" [disabled]="soaresForm.invalid">
+                                <i class="bi bi-send"></i> Crear
+                            </button>
+                            <a [routerLink]="['/soares/admin/plist']" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Volver al Listado
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

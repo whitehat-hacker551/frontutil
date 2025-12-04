@@ -1,0 +1,39 @@
+<!-- crear la tabla con oSalinasReceta -->
+<div class="container my-4 edit-form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-card">
+        <h1 class="my-5">Detalle de la receta</h1>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="row">{{ oSalinasReceta?.id }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Nombre</th>
+              <td>{{ oSalinasReceta?.nombre }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Ingredientes</th>
+              <td>{{ oSalinasReceta?.ingredientes }}</td>
+            </tr>
+            <tr>
+              <th scope="col" class="align-middle">Preparacion</th>
+              <td>{{ oSalinasReceta?.preparacion }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Creación</th>
+              <td>{{ oSalinasReceta?.fechaCreacion }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Actualización</th>
+              <td>{{ oSalinasReceta?.fechaModificacion }}</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

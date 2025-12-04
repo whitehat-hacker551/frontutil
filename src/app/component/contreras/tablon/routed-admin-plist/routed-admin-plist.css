@@ -1,0 +1,15 @@
+table.table {
+	background-color: #e9d8fd !important; 
+	color: #3d0066;
+}
+
+table.table th,
+table.table td {
+	background-color: #e9d8fd;
+	color: #3d0066;
+}
+
+table.table thead th {
+	background-color: #b794f4; 
+	color: #3d0066;
+}

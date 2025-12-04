@@ -1,0 +1,43 @@
+<div class="home-container">
+  
+  <header class="text-center mb-5 animate-fade-in">
+    <h1 class="main-title">🚀 Pallas Notas</h1>
+    <p class="subtitle">Organiza tus ideas, domina tu tiempo.</p>
+  </header>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      
+      <div class="col-md-6 col-lg-5 mb-4">
+        <div class="card custom-card h-100">
+          <div class="card-body text-center p-5">
+            <div class="icon-circle mb-4">
+              📝
+            </div>
+            <h3 class="card-title fw-bold">Administrador de Notas</h3>
+            <p class="card-text text-muted mb-4">
+              Gestiona todas tus notas con el CRUD completo.
+              Crea, edita, borra y genera datos de prueba.
+            </p>
+            
+            <button class="btn btn-grad w-100 py-3" [routerLink]="['/pallas/plist']">
+              Entrar al Panel de Control ➜
+            </button>
+
+            <div class="mt-3">
+              <a [routerLink]="['/pallas/new']" class="small-link">
+                + Crear una nota rápida
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="text-center mt-5 text-muted small">
+    <p>Proyecto Pallas © 2025 - Desarrollado con Angular 17 & Spring Boot</p>
+  </footer>
+
+</div>

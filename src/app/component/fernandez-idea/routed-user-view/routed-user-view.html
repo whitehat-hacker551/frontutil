@@ -1,0 +1,102 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      @if (loading) {
+      <div class="d-flex justify-content-center my-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Cargando...</span>
+        </div>
+      </div>
+      }
+
+  @if (error) {
+  <!-- No mostrar nada si no hay idea pública -->
+  }
+
+  @if (!loading && !error && oIdea) {
+      <div class="d-flex justify-content-center my-3">
+        <app-paginacion
+          [numPage]="numPage"
+          [numPages]="oPage?.totalPages || 1"
+          (pageChange)="goToPage($event)"
+        ></app-paginacion>
+        <app-botonera-rpp [numRpp]="numRpp" (rppChange)="onRppChange($event)"></app-botonera-rpp>
+      </div>
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2 class="mb-0">{{ oIdea.titulo }}</h2>
+            <span class="badge bg-light text-dark">
+              {{ oIdea.categoria }}
+            </span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="mb-4">
+            <h5 class="text-muted">Comentario</h5>
+            <p class="lead">{{ oIdea.comentario }}</p>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <strong><i class="bi bi-calendar3 me-2"></i>Fecha de Creación:</strong>
+              <p class="mb-0">{{ oIdea.fechaCreacion }}</p>
+            </div>
+            <div class="col-md-6 mb-3">
+              <strong><i class="bi bi-calendar-check me-2"></i>Última Modificación:</strong>
+              <p class="mb-0">{{ oIdea.fechaModificacion }}</p>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <strong><i class="bi bi-tag me-2"></i>Categoría:</strong>
+              <span class="badge ms-2"
+                [class.bg-primary]="oIdea.categoria === 'IDEA'"
+                [class.bg-success]="oIdea.categoria === 'MEJORA'"
+                [class.bg-danger]="oIdea.categoria === 'BUG'">
+                {{ oIdea.categoria }}
+              </span>
+            </div>
+            <div class="col-md-6">
+              <strong><i class="bi bi-globe me-2"></i>Visibilidad:</strong>
+              @if (oIdea.publico) {
+                <span class="badge bg-success ms-2">
+                  <i class="bi bi-check-circle me-1"></i>Público
+                </span>
+              } @else {
+                <span class="badge bg-secondary ms-2">
+                  <i class="bi bi-lock me-1"></i>Privado
+                </span>
+              }
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-12">
+              <div class="d-flex flex-wrap gap-2 justify-content-center">
+                @for (idea of oPage?.content; track idea.id) {
+                  @if (idea.publico) {
+                    <button class="btn btn-outline-secondary btn-sm"
+                      [class.active]="idea.id === oIdea?.id"
+                      (click)="goToIdea(idea.id)">
+                      {{ idea.titulo }}
+                    </button>
+                  }
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a [routerLink]="['/fernandez-idea/user/plist']" class="btn btn-outline-primary">
+            <i class="bi bi-arrow-left me-2"></i>Volver al listado
+          </a>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

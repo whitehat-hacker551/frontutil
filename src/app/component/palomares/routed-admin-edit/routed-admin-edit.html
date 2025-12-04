@@ -1,0 +1,159 @@
+<div class="container my-4 edit-form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-card">
+        <header class="form-header mb-4">
+          <h1 class="form-title">Editar Tarea</h1>
+          <p class="text-muted small">Modifica los campos de la tarea</p>
+        </header>
+
+        @if (loading) {
+        <div class="d-flex justify-content-center my-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+        </div>
+        }
+
+        @if (error) {
+        <div class="alert alert-danger" role="alert">
+          <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+        </div>
+        }
+
+        @if (!loading && !error) {
+        <form [formGroup]="palomaresForm" (ngSubmit)="onSubmit()" novalidate>
+          <!-- Título -->
+          <div class="mb-4">
+            <label for="titulo" class="form-label">Título <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="titulo?.invalid && titulo?.touched"
+              [class.is-valid]="titulo?.valid && titulo?.touched"
+              id="titulo"
+              formControlName="titulo"
+              placeholder="Introduce el título de la tarea"
+            />
+            @if (titulo?.invalid && titulo?.touched) {
+            <div class="invalid-feedback">
+              @if (titulo?.errors?.['required']) {
+                <span>El título es obligatorio.</span>
+              }
+              @if (titulo?.errors?.['minlength']) {
+                <span>El título debe tener al menos 3 caracteres.</span>
+              }
+              @if (titulo?.errors?.['maxlength']) {
+                <span>El título no puede superar 200 caracteres.</span>
+              }
+            </div>
+            }
+          </div>
+
+          <!-- Descripción -->
+          <div class="mb-4">
+            <label for="descripcion" class="form-label">Descripción <span class="text-danger">*</span></label>
+            <textarea
+              class="form-control"
+              [class.is-invalid]="descripcion?.invalid && descripcion?.touched"
+              [class.is-valid]="descripcion?.valid && descripcion?.touched"
+              id="descripcion"
+              formControlName="descripcion"
+              rows="8"
+              placeholder="Escribe la descripción de la tarea"
+            ></textarea>
+            @if (descripcion?.invalid && descripcion?.touched) {
+            <div class="invalid-feedback">
+              @if (descripcion?.errors?.['required']) {
+                <span>La descripción es obligatoria.</span>
+              }
+              @if (descripcion?.errors?.['minlength']) {
+                <span>La descripción debe tener al menos 3 caracteres.</span>
+              }
+            </div>
+            }
+          </div>
+
+          <!-- Categoría -->
+          <div class="mb-4">
+            <label for="categoria" class="form-label">Categoría <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="categoria?.invalid && categoria?.touched"
+              [class.is-valid]="categoria?.valid && categoria?.touched"
+              id="categoria"
+              formControlName="categoria"
+              placeholder="Ej: Trabajo, Personal, Estudios"
+            />
+            @if (categoria?.invalid && categoria?.touched) {
+            <div class="invalid-feedback">
+              @if (categoria?.errors?.['required']) {
+                <span>La categoría es obligatoria.</span>
+              }
+              @if (categoria?.errors?.['minlength']) {
+                <span>La categoría debe tener al menos 3 caracteres.</span>
+              }
+              @if (categoria?.errors?.['maxlength']) {
+                <span>La categoría no puede superar 100 caracteres.</span>
+              }
+            </div>
+            }
+            <small class="form-text text-muted">Ejemplo: Trabajo, Personal, Estudios, Hogar</small>
+          </div>
+
+          <!-- Checkboxes -->
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="completada"
+                  formControlName="completada"
+                />
+                <label class="form-check-label" for="completada">
+                  <i class="bi bi-check-circle me-1"></i>Marcar como completada
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="publicado"
+                  formControlName="publicado"
+                />
+                <label class="form-check-label" for="publicado">
+                  <i class="bi bi-eye me-1"></i>Publicar (visible para usuarios)
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botones -->
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <a [routerLink]="['/palomares/plist']" class="btn btn-outline-secondary">
+              <i class="bi bi-arrow-left me-2"></i>Cancelar
+            </a>
+            <button 
+              type="submit" 
+              class="btn btn-primary"
+              [disabled]="submitting || palomaresForm.invalid"
+            >
+              @if (submitting) {
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              }
+              @if (!submitting) {
+                <i class="bi bi-check-circle me-2"></i>
+              }
+              Guardar Cambios
+            </button>
+          </div>
+        </form>
+        }
+      </div>
+    </div>
+  </div>
+</div>

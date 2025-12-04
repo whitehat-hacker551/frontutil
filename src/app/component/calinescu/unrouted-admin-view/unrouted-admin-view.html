@@ -21,8 +21,8 @@
       <div class="col-12">
         <div class="d-flex align-items-start">
           <strong class="text-muted" style="min-width: 200px;">Contenido:</strong>
-          <div class="flex-fill">
-            <div class="p-3 bg-light rounded">
+          <div class="flex-fill" style="max-width: calc(100% - 200px); overflow: hidden;">
+            <div class="p-3 bg-light rounded" style="word-wrap: break-word; overflow-wrap: break-word; white-space: pre-wrap; overflow-x: auto;">
               {{ oCalinescu?.contenido }}
             </div>
           </div>
@@ -44,6 +44,22 @@
         <div class="d-flex align-items-center">
           <strong class="text-muted" style="min-width: 200px;">Fecha Modificación:</strong>
           <span>{{ oCalinescu?.fecha_modificacion }}</span>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="d-flex align-items-center">
+          <strong class="text-muted" style="min-width: 200px;">Precio Estimado:</strong>
+          <span class="badge bg-info text-dark">
+            <i class="bi bi-currency-euro me-1"></i>{{ oCalinescu?.precio || 0 | number: '1.2-2' }} €
+          </span>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="d-flex align-items-center">
+          <strong class="text-muted" style="min-width: 200px;">Cantidad:</strong>
+          <span class="badge bg-secondary">
+            <i class="bi bi-123 me-1"></i>{{ oCalinescu?.cantidad || 1 }} {{ (oCalinescu?.cantidad || 1) === 1 ? 'unidad' : 'unidades' }}
+          </span>
         </div>
       </div>
       <div class="col-12">

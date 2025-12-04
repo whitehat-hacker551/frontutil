@@ -1,0 +1,27 @@
+/* Estilos para la vista usuario unrouted de Soares */
+/* Yo doy fondo gris claro y sombra suave a la tarjeta de la vista de usuario */
+.post-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+/* Yo centro y hago grande el título de la tarjeta */
+.post-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+}
+/* Yo muestro el contenido de la tarjeta con buen color y tamaño */
+.post-content {
+  font-size: 1.1rem;
+  color: #333;
+}
+/* Yo agrego espacio arriba del pie de la tarjeta */
+.post-footer {
+  margin-top: 2rem;
+}
+/* Yo pongo las etiquetas en cursiva */
+.tags {
+  font-style: italic;
+}

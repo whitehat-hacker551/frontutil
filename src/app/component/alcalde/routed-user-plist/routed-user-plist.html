@@ -1,0 +1,97 @@
+<section class="hero py-5">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-12 col-lg-7">
+        <p class="text-uppercase text-primary fw-semibold mb-2">Mi lista de lecturas</p>
+        <h1 class="display-5 fw-bold">Seleccion personal de libros que ya he disfrutado</h1>
+        <p class="lead text-muted">Cada reseña incluye una valoracion y marca tus favoritos</p>
+        <div class="d-flex gap-3 flex-wrap">
+          <a class="btn btn-primary" routerLink="/alcalde/plist"><i class="bi bi-gear-fill me-2"></i>Administrar</a>
+          <a class="btn btn-outline-light" routerLink="/blog"><i class="bi bi-journal-bookmark me-2"></i>Visitar el blog</a>
+        </div>
+      </div>
+      <div class="col-12 col-lg-5 text-center text-lg-end">
+        <div class="hero-card p-4">
+          <p class="text-muted mb-1">Filtro rápido de selección</p>
+          <div class="row g-2">
+            <div class="col-12 col-sm-6">
+              <label class="form-label small">Género</label>
+              <select #genreSelect class="form-select" (change)="onGenreChange(genreSelect.value)">
+                <option value="Todos">Todos</option>
+                @for (genre of genreOptions; track genre) {
+                  <option [value]="genre">{{ genre }}</option>
+                }
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="form-label small">Valoración mínima</label>
+              <select #ratingSelect class="form-select" (change)="onRatingChange(ratingSelect.value)">
+                <option value="0">Todas</option>
+                <option value="3">3+</option>
+                <option value="4">4+</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container my-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+      <p class="text-uppercase text-muted small mb-1">Selección destacada</p>
+      <h2 class="h4 mb-0">Libros recomendados ahora mismo</h2>
+    </div>
+    <div class="text-muted small">
+      {{ filteredFeatured.length }} / {{ featured.length }} coincidencias
+    </div>
+  </div>
+
+  @if (loadingFeatured) {
+    <div class="text-center py-4">
+      <div class="spinner-border"></div>
+    </div>
+  } @else {
+    <div class="row g-4">
+      @for (entrada of filteredFeatured; track entrada.id) {
+        <div class="col-12">
+          <app-alcalde-user-card [entry]="entrada"></app-alcalde-user-card>
+        </div>
+      }
+      @if (!filteredFeatured.length) {
+        <div class="col-12">
+          <div class="alert alert-info">Ningún libro cumple los filtros</div>
+        </div>
+      }
+    </div>
+  }
+</section>
+
+<section class="container my-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+      <p class="text-uppercase text-muted small mb-1">Historico completo</p>
+      <h2 class="h4 mb-0">Lecturas publicadas recientemente</h2>
+    </div>
+  </div>
+
+  @if (loadingPage) {
+    <div class="text-center py-4">
+      <div class="spinner-border"></div>
+    </div>
+  } @else {
+    <div class="row g-4">
+      @for (entrada of pagePublished?.content; track entrada.id) {
+        <div class="col-12">
+          <app-alcalde-user-card [entry]="entrada"></app-alcalde-user-card>
+        </div>
+      }
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+      <app-paginacion [numPage]="numPage" [numPages]="pagePublished?.totalPages || 1" (pageChange)="goToPage($event)"></app-paginacion>
+    </div>
+  }
+</section>

@@ -1,0 +1,59 @@
+<!-- crear la tabla con oPalomares -->
+<div class="container my-4 edit-form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-card">
+        <h1 class="my-5">Detalle de tarea</h1>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="row">{{ oPalomares?.id }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Título</th>
+              <td>{{ oPalomares?.titulo }}</td>
+            </tr>
+            <tr>
+              <th scope="col" class="align-middle">Descripción</th>
+              <td>{{ oPalomares?.descripcion }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Categoría</th>
+              <td><span class="badge bg-info">{{ oPalomares?.categoria }}</span></td>
+            </tr>
+            <tr>
+              <th scope="col">Completada</th>
+              <td>
+                @if (oPalomares?.completada) {
+                  <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Sí</span>
+                } @else {
+                  <span class="badge bg-warning"><i class="bi bi-clock me-1"></i>Pendiente</span>
+                }
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">Publicado</th>
+              <td>
+                @if (oPalomares?.publicado) {
+                  <span class="badge bg-success">Sí</span>
+                } @else {
+                  <span class="badge bg-secondary">No</span>
+                }
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">Creación</th>
+              <td>{{ oPalomares?.fechaCreacion }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Actualización</th>
+              <td>{{ oPalomares?.fechaModificacion }}</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

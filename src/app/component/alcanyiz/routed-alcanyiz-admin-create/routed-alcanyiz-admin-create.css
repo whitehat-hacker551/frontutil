@@ -1,0 +1,60 @@
+
+/* Admin create form — dark-blue theme, readable controls */
+.new-form{ background:#0b1220; padding:28px 12px; border-radius:12px }
+.form-card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:10px; box-shadow: 0 10px 30px rgba(2,6,23,0.6); color:#e6eef9 }
+.form-header{ margin-bottom:12px }
+.form-title{ color:#e6eef9; font-size:22px; margin:0 }
+.form-card .text-muted{ color:rgba(230,238,249,0.7) }
+
+.create-form .form-field{ margin-bottom:12px }
+.create-form .form-label{ color:#cfeeff; font-weight:600 }
+.create-form .form-control{ background: rgba(255,255,255,0.02); color:#e6eef9; border:1px solid rgba(255,255,255,0.04); }
+.create-form .form-control:focus{ border-color: rgba(30,144,255,0.9); box-shadow: 0 0 0 0.12rem rgba(30,144,255,0.06); }
+.create-form .form-select{ background: rgba(255,255,255,0.02); color:#e6eef9; border:1px solid rgba(255,255,255,0.04) }
+
+.form-actions .btn-cancelar{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:220px;
+  padding:18px 28px;
+  border-radius:22px;
+  background: linear-gradient(180deg,#ff1e1e, #e90e0e);
+  color: white;
+  text-decoration:none;
+  border: none;
+  font-weight:600;
+  font-size:18px;
+  box-shadow: 0 7px 0px rgb(163, 17, 17);
+}
+
+.form-actions .btn-cancelar:hover{
+  transform: translateY(7px);
+  box-shadow: none;
+}
+
+.form-actions .btn-enviar{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:220px;
+  padding:18px 28px;
+  border-radius:22px;
+  background: linear-gradient(180deg,#1ebfff, #0e99e9);
+  color: white;
+  text-decoration:none;
+  border: none;
+  font-weight:600;
+  font-size:18px;
+  box-shadow: 0 7px 0px rgb(17, 109, 163);
+}
+
+.form-actions .btn-enviar:hover{
+  transform: translateY(7px);
+  box-shadow: none;
+}
+
+@media (max-width:768px){
+	.new-form{ padding:16px }
+	.form-card{ padding:12px }
+}

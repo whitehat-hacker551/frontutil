@@ -27,16 +27,18 @@ export class CalinescuService {
    * @param rpp - Registros por página (rows per page)
    * @param order - Campo por el cual ordenar (por defecto 'id')
    * @param direction - Dirección del ordenamiento: 'asc' o 'desc' (por defecto 'asc')
+   * @param soloPublicados - Si es true, solo devuelve items publicados (para vistas de usuario)
    * @returns Observable con la página de items solicitada
    */
-  getPage(page: number, rpp: number, order: string = '', direction: string = ''): Observable<IPage<ICalinescu>> {
+  getPage(page: number, rpp: number, order: string = '', direction: string = '', soloPublicados: boolean = false): Observable<IPage<ICalinescu>> {
     if (order === '') {
       order = 'id';
     }
     if (direction === '') {
       direction = 'asc';
     }
-    return this.oHttp.get<IPage<ICalinescu>>(serverURL + `/calinescuListaCompra?page=${page}&size=${rpp}&sort=${order},${direction}`);
+    const publicadoParam = soloPublicados ? '&publicado=true' : '';
+    return this.oHttp.get<IPage<ICalinescu>>(serverURL + `/calinescuListaCompra?page=${page}&size=${rpp}&sort=${order},${direction}${publicadoParam}`);
   }
 
   /**
@@ -90,6 +92,15 @@ export class CalinescuService {
    */
   rellenaListaCompra(numItems: number): Observable<number> {
     return this.oHttp.get<number>(serverURL + '/calinescuListaCompra/rellena/' + numItems);
+  }
+
+  getTotalPrecios(soloPublicados: boolean = false): Observable<number> {
+    const publicadoParam = soloPublicados ? '?publicado=true' : '';
+    return this.oHttp.get<number>(serverURL + '/calinescuListaCompra/total' + publicadoParam);
+  }
+
+  deleteAll(): Observable<number> {
+    return this.oHttp.delete<number>(serverURL + '/calinescuListaCompra/all');
   }
 
 }

@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 import { IPage } from '../../../model/plist';
 import { ICalinescu } from '../../../model/calinescu';
 import { CalinescuService } from '../../../service/calinescu.service';
@@ -17,7 +18,7 @@ import { UnroutedUserView2Calinescu } from "../unrouted-user-view2/unrouted-user
  */
 @Component({
   selector: 'app-routed-user-plist-calinescu',
-  imports: [Paginacion, UnroutedUserView2Calinescu],
+  imports: [Paginacion, UnroutedUserView2Calinescu, DecimalPipe],
   templateUrl: './routed-user-plist.html',
   styleUrl: './routed-user-plist.css',
 })
@@ -30,6 +31,7 @@ export class RoutedUserPlistCalinescu {
   
   /** Cantidad de registros por página (fijo en 2 para vista de usuario) */
   numRpp: number = 2;
+  totalGlobal: number = 0;
 
   constructor(private oCalinescuService: CalinescuService) { }
 
@@ -37,14 +39,16 @@ export class RoutedUserPlistCalinescu {
 
   ngOnInit() {
     this.obtenerPagina();
+    this.cargarTotalGlobal();
   }
 
   /**
    * Obtiene la página actual de items desde el servidor.
    * Los items se ordenan por ID descendente para mostrar los más recientes primero.
+   * Solo carga items publicados (soloPublicados=true).
    */
   obtenerPagina() {
-    this.oCalinescuService.getPage(this.numPage, this.numRpp, 'id', 'desc').subscribe({
+    this.oCalinescuService.getPage(this.numPage, this.numRpp, 'id', 'desc', true).subscribe({
       next: (data: IPage<ICalinescu>) => {
         this.oPage = data;
         console.log('Datos recibidos:', data); // Para debug
@@ -81,5 +85,21 @@ export class RoutedUserPlistCalinescu {
     this.numRpp = n;
     this.obtenerPagina();
     return false;
+  }
+
+  calcularTotal(): number {
+    if (!this.oPage || !this.oPage.content) return 0;
+    return this.oPage.content.reduce((sum, item) => sum + (item.precio || 0), 0);
+  }
+
+  cargarTotalGlobal() {
+    this.oCalinescuService.getTotalPrecios(true).subscribe({
+      next: (total: number) => {
+        this.totalGlobal = total;
+      },
+      error: (error: HttpErrorResponse) => {
+        console.error('Error al cargar total global:', error);
+      },
+    });
   }
 }

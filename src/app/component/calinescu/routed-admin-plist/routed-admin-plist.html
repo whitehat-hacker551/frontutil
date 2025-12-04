@@ -58,6 +58,25 @@
                 }
               </button>
             </div>
+            <div class="col-auto">
+              <button
+                class="btn btn-danger btn-sm"
+                [disabled]="borrandoTodo || !oPage || !oPage.totalElements || oPage.totalElements === 0"
+                (click)="confirmarBorrarTodo()"
+                title="Acción irreversible"
+              >
+                @if (borrandoTodo) {
+                <span
+                  class="spinner-border spinner-border-sm me-2"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                Borrando...
+                } @else {
+                <i class="bi bi-trash-fill me-2"></i>Borrar Todo (Irreversible)
+                }
+              </button>
+            </div>
             <div class="col">
               @if (rellenaOk) {
               <div class="text-success small">
@@ -101,6 +120,8 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Nombre</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Cantidad</th>
           <th scope="col">Fecha Compra Esperada</th>
           <th scope="col">Creación</th>
           <th scope="col">Modificación</th>
@@ -113,6 +134,16 @@
         <tr>
           <th scope="row">{{ oCalinescu.id }}</th>
           <td>{{ oCalinescu.nombre }}</td>
+          <td>
+            <span class="badge bg-info text-dark">
+              {{ oCalinescu.precio || 0 | number: '1.2-2' }} €
+            </span>
+          </td>
+          <td>
+            <span class="badge bg-secondary">
+              {{ oCalinescu.cantidad || 1 }}
+            </span>
+          </td>
           <td>{{ oCalinescu.fecha_compra_esperada | datetime }}</td>
           <td>{{ oCalinescu.fecha_creacion | datetime }}</td>
           <td>{{ oCalinescu.fecha_modificacion | datetime }}</td>
@@ -139,6 +170,19 @@
         </tr>
         }
       </tbody>
+      <tfoot>
+        <tr class="table-success">
+          <th colspan="2" class="text-end fw-bold">TOTAL DE TODA LA LISTA:</th>
+          <th>
+            <span class="badge bg-success fs-6">
+              <i class="bi bi-currency-euro me-1"></i>{{ totalGlobal | number: '1.2-2' }} €
+            </span>
+          </th>
+          <th colspan="5" class="text-muted small">
+            <i class="bi bi-info-circle me-1"></i>Total de {{ oPage?.totalElements || 0 }} productos
+          </th>
+        </tr>
+      </tfoot>
     </table>
         </div>
       </div>

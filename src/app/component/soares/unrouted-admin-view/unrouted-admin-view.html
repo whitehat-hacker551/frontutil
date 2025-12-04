@@ -1,0 +1,39 @@
+<!-- Yo muestro el detalle de una pregunta para el administrador, mostrando todos los datos relevantes en una tabla -->
+<!-- Detalle de pregunta Soares (admin) -->
+<div class="container my-4 edit-form">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+            <div class="form-card">
+                <h1 class="my-5">Detalle de pregunta</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="row">{{ oSoares()?.id }}</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Pregunta</th>
+                            <td>{{ oSoares()?.preguntas }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="align-middle">Publicación</th>
+                            <td>{{ oSoares()?.publicacion ? 'Sí' : 'No' }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Aprobación</th>
+                            <td>{{ oSoares()?.aprobacion ? 'Sí' : 'No' }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Creación</th>
+                            <td>{{ oSoares()?.fechaCreacion }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Actualización</th>
+                            <td>{{ oSoares()?.fechaModificacion }}</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<!-- Yo muestro la página para confirmar la eliminación de una pregunta, mostrando los datos y botones para eliminar o cancelar -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0">Eliminar Pregunta al Universo #{{ id }}</h3>
+                </div>
+                <div class="card-body">
+                    <div *ngIf="oSoares">
+                        <p class="lead">¿Estás seguro de que deseas eliminar la siguiente pregunta?</p>
+                        <div class="alert alert-warning" role="alert">
+                            <strong>ID:</strong> {{ oSoares.id }} <br>
+                            <strong>Pregunta:</strong> {{ oSoares.preguntas }} <br>
+                            <strong>Publicación:</strong> {{ oSoares.publicacion ? 'Sí' : 'No' }}
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-danger" (click)="remove()">
+                                <i class="bi bi-trash"></i> Confirmar Eliminación
+                            </button>
+                            <a [routerLink]="['/soares/admin/plist']" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+                        </div>
+                    </div>
+                    <div *ngIf="!oSoares && !error">
+                        <p class="text-center">Cargando pregunta...</p>
+                    </div>
+                    <div *ngIf="error" class="alert alert-danger" role="alert">
+                        {{ error }}
+                        <a [routerLink]="['/soares/admin/plist']" class="btn btn-secondary mt-3">
+                            <i class="bi bi-arrow-left"></i> Volver al Listado
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

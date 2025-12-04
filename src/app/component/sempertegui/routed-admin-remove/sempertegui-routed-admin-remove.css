@@ -1,0 +1,13 @@
+.remove-movie .confirm-box {
+  background: #f8f9fa;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.remove-movie .confirm-box h2 {
+  font-weight: 500;
+}
+
+.remove-movie .btn-danger {
+  box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+}

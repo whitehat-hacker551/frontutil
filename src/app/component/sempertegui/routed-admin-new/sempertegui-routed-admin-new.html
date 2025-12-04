@@ -1,0 +1,174 @@
+<div class="container my-4 new-form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-card">
+        <header class="form-header mb-4">
+          <h1 class="form-title">Añadir una nueva película</h1>
+          <p class="text-muted small">Completa los campos para añadir una película a tu catálogo</p>
+        </header>
+
+        @if (error) {
+        <div class="alert alert-danger" role="alert">
+          <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+        </div>
+        }
+
+        <form [formGroup]="movieForm" (ngSubmit)="onSubmit()" novalidate>
+          <!-- Nombre -->
+          <div class="mb-4">
+            <label for="nombre" class="form-label">Nombre <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="nombre?.invalid && nombre?.touched"
+              [class.is-valid]="nombre?.valid && nombre?.touched"
+              id="nombre"
+              formControlName="nombre"
+              placeholder="Introduce el título del post"
+            />
+            @if (nombre?.invalid && nombre?.touched) {
+            <div class="invalid-feedback">
+              @if (nombre?.errors?.['required']) {
+                <span>El campo nombre es obligatorio.</span>
+              }
+              @if (nombre?.errors?.['minlength']) {
+                <span>El campo nombre debe tener al menos 2 caracteres.</span>
+              }
+              @if (nombre?.errors?.['maxlength']) {
+                <span>El campo nombre no puede superar 100 caracteres.</span>
+              }
+            </div>
+            }
+          </div>
+
+          <!-- Género -->
+          <div class="mb-4">
+            <label for="genero" class="form-label">Género <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="genero?.invalid && genero?.touched"
+              [class.is-valid]="genero?.valid && genero?.touched"
+              id="genero"
+              formControlName="genero"
+              placeholder="Géneros separadas por comas"
+            />
+            @if (genero?.invalid && genero?.touched) {
+            <div class="invalid-feedback">
+              @if (genero?.errors?.['required']) {
+                <span>El campo género es obligatorio.</span>
+              }
+              @if (genero?.errors?.['minlength']) {
+                <span>El campo género debe tener al menos 3 caracteres.</span>
+              }
+              @if (genero?.errors?.['maxlength']) {
+                <span>El campo género no puede superar 100 caracteres.</span>
+              }
+            </div>
+            }
+            <small class="form-text text-muted">Ejemplo: Comedia, Acción, Drama</small>
+          </div>
+
+          <!-- Director -->
+          <div class="mb-4">
+            <label for="director" class="form-label">Director <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="director?.invalid && director?.touched"
+              [class.is-valid]="director?.valid && director?.touched"
+              id="director"
+              formControlName="director"
+              placeholder="Introduce el nombre de un director"
+            />
+            @if (director?.invalid && director?.touched) {
+            <div class="invalid-feedback">
+              @if (director?.errors?.['required']) {
+                <span>El campo director es obligatorio.</span>
+              }
+              @if (director?.errors?.['minlength']) {
+                <span>El campo director debe tener al menos 3 caracteres.</span>
+              }
+              @if (director?.errors?.['maxlength']) {
+                <span>El campo director no puede superar 100 caracteres.</span>
+              }
+            </div>
+            }
+          </div>
+
+          <!-- Puntuación -->
+          <div class="mb-4">
+            <label for="puntuacion" class="form-label">Puntuación</label><br>
+            <div class="d-flex">
+              <div class="d-flex me-5">
+                0
+                <input
+                  type="range"
+                  id="puntuacion"
+                  class="ms-1 me-1"
+                  step="1"
+                  min="0"
+                  max="100"
+                  formControlName="puntuacion"
+                />
+                100
+              </div>
+              <span class="text-warning">{{ puntuacion?.value }} <i class="bi bi-star-fill"></i></span>
+            </div>
+          </div>
+
+          <!-- Año -->
+          <div class="mb-4">
+            <label for="anyo" class="form-label">Año <span class="text-danger">*</span></label>
+            <input
+              type="number"
+              class="form-control"
+              [class.is-invalid]="anyo?.invalid && anyo?.touched"
+              [class.is-valid]="anyo?.valid && anyo?.touched"
+              id="anyo"
+              formControlName="anyo"
+            />
+            @if (anyo?.invalid && anyo?.touched) {
+            <div class="invalid-feedback">
+              @if (anyo?.errors?.['required']) {
+                <span>El campo año es obligatorio.</span>
+              }
+              @if (anyo?.errors?.['min']) {
+                <span>El campo año no puede ser menor a 1901.</span>
+              } @else {
+                @if (anyo?.errors?.['max']) {
+                  <span>El campo año no puede ser superior a 2155.</span>
+                } @else {
+                  @if(anyo?.errors?.['pattern']){
+                    <span>El campo año solo admite números enteros.</span>
+                  }
+                }
+              }
+            </div>
+            }
+          </div>
+
+          <!-- Botones -->
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <a [routerLink]="['/sempertegui/plist']" class="btn btn-outline-secondary">
+              <i class="bi bi-arrow-left me-2"></i>Cancelar
+            </a>
+            <button 
+              type="submit" 
+              class="btn btn-primary"
+              [disabled]="submitting || movieForm.invalid"
+            >
+              @if (submitting) {
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              }
+              @if (!submitting) {
+                <i class="bi bi-plus-circle me-2"></i>
+              }
+              Añadir película
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

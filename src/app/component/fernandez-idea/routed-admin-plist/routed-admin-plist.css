@@ -1,0 +1,32 @@
+/* Estilos específicos para el listado de ideas */
+
+/* Toolbar responsive improvements (same behavior as user plist) */
+.d-flex.justify-content-between.align-items-center,
+.d-flex.justify-content-between.my-2.align-items-center {
+	flex-wrap: wrap;
+	gap: .5rem;
+}
+
+.d-flex.gap-2.align-items-center { gap: .5rem; align-items: center; }
+
+input.form-control.form-control-sm { min-width: 140px; max-width: 360px; }
+select.form-select.form-select-sm { min-width: 110px; }
+
+.btn.btn-sm { padding: .25rem .5rem; }
+
+@media (max-width: 576px) {
+	input.form-control.form-control-sm, select.form-select.form-select-sm { min-width: 100%; max-width: 100%; }
+	.d-flex.justify-content-between.align-items-center { flex-direction: column-reverse; align-items: stretch; }
+	.ms-2, .ms-3 { margin-left: 0 !important; margin-top: .5rem; }
+}
+
+/* center the paginacion in the toolbar */
+.toolbar-grid { width: 100%; }
+.toolbar-left { flex: 1 1 200px; }
+.toolbar-center { flex: 0 1 560px; }
+.toolbar-right { flex: 1 1 200px; }
+.toolbar-center app-paginacion { display: flex; justify-content: center; }
+
+/* Slim buttons for admin toolbar */
+.maintenance-btn-admin { padding: .22rem .5rem; font-size: 0.85rem; line-height:1; border-radius:.35rem; }
+.maintenance-btn-admin .bi { font-size: 0.95rem; }

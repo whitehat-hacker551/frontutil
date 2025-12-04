@@ -1,0 +1,27 @@
+/* Estilos específicos para la vista detallada de usuario */
+.card-header h2 {
+  font-size: 1.5rem;
+}
+
+.lead {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.card-header{
+  background: linear-gradient(90deg, rgba(124,58,237,0.95), rgba(6,182,212,0.9));
+  color: white;
+  border-bottom: none;
+}
+
+.card-footer a.btn{
+  border-radius: 999px; background: white; color: var(--accent-1); border: none;
+}
+
+.idea-nav .btn{
+  border-radius: 999px; margin: 0.15rem; padding: 0.45rem 0.9rem;
+}
+.idea-nav .btn.active{ background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); color: white; }
+
+.visibility-badge{ font-weight:700; }
+

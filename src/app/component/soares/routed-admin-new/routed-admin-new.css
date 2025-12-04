@@ -1,0 +1,39 @@
+/* Yo doy color y estilo a la cabecera de la tarjeta en la vista de administración */
+.card-header {
+    background-color: #007bff; /* Azul primario */
+}
+
+/* Yo agrego espacio interno a la tarjeta para que el contenido se vea ordenado */
+.card-body {
+    padding: 2rem;
+}
+
+/* Yo hago que las etiquetas de los formularios sean claras y visibles */
+.form-label {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Yo pinto los botones principales de azul y les doy efecto al pasar el mouse */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* Yo cambio el color del botón principal cuando pasas el mouse */
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Yo pinto los botones secundarios de gris y les doy efecto al pasar el mouse */
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+/* Yo cambio el color del botón secundario cuando pasas el mouse */
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+}

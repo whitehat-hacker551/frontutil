@@ -1,0 +1,18 @@
+<div class="front-view-post d-flex flex-column flex-md-row align-items-start container-view">
+  <div class="content flex-fill">
+    <h1 class="title">{{ oQuestion?.question }}</h1>
+    <p class="excerpt">1. {{ oQuestion?.answer1 ?? '' | trim : 150 }}</p>
+    <p class="excerpt">2. {{ oQuestion?.answer2 ?? '' | trim : 150 }}</p>
+    <p class="excerpt">3. {{ oQuestion?.answer3 ?? '' | trim : 150 }}</p>
+    <p class="excerpt">4. {{ oQuestion?.answer4 ?? '' | trim : 150 }}</p>
+    <div class="excerpt">
+      <a [routerLink]="['/alcanyiz/question', oQuestion?.id]" class="button-seccion">Leer</a>
+    </div>
+    <div class="d-flex justify-content-end">
+      <small class="me-3 date-publi">
+        Publicado el {{ oQuestion?.create_date | datetime : 'solofechacompleta' }}
+        a las {{ oQuestion?.modify_date | datetime : 'solohora' }}
+      </small>
+    </div>
+  </div>
+</div>

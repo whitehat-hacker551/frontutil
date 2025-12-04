@@ -1,0 +1,78 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-8 offset-2">
+      
+      <h3>Crear Nueva Nota</h3>
+
+      @if (strResult) {
+        <div class="alert alert-info my-3">
+          {{ strResult }}
+        </div>
+      }
+
+      <form [formGroup]="oForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label">ID</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" formControlName="id" readonly placeholder="(Autogenerado)">
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label">Título</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" formControlName="titulo" 
+                   [class.is-invalid]="oForm.get('titulo')?.invalid && oForm.get('titulo')?.touched">
+            
+            @if (oForm.get('titulo')?.hasError('required') && oForm.get('titulo')?.touched) {
+              <div class="text-danger small">
+                El título es obligatorio.
+              </div>
+            }
+
+            @if (oForm.get('titulo')?.hasError('minlength') && oForm.get('titulo')?.touched) {
+              <div class="text-danger small">
+                El título debe tener al menos 3 letras.
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label">Contenido</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" formControlName="contenido" rows="4"
+             [class.is-invalid]="oForm.get('contenido')?.invalid && oForm.get('contenido')?.touched"></textarea>
+            
+            @if (oForm.get('contenido')?.hasError('required') && oForm.get('contenido')?.touched) {
+               <div class="text-danger small">
+                El contenido no puede estar vacío.
+              </div>
+             }
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label">Opciones</label>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" formControlName="publicado" id="checkPub">
+              <label class="form-check-label" for="checkPub">
+                Publicar inmediatamente
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+          <button type="button" class="btn btn-secondary" [routerLink]="['/pallas/plist']">Volver</button>
+          
+          <button type="submit" class="btn btn-primary" [disabled]="!oForm.valid">Guardar Nota</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

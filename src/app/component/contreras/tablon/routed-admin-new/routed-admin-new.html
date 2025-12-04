@@ -1,0 +1,127 @@
+<div class="container my-4 new-form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-card">
+        <header class="form-header mb-4">
+          <h1 class="form-title">Crear Nuevo Post</h1>
+          <p class="text-muted small">Completa los campos para crear un nuevo post</p>
+        </header>
+
+        @if (error) {
+        <div class="alert alert-danger" role="alert">
+          <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+        </div>
+        }
+
+        <form [formGroup]="tablonForm" (ngSubmit)="onSubmit()" novalidate>
+          <!-- Título -->
+          <div class="mb-4">
+            <label for="titulo" class="form-label">Título <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="titulo?.invalid && titulo?.touched"
+              [class.is-valid]="titulo?.valid && titulo?.touched"
+              id="titulo"
+              formControlName="titulo"
+              placeholder="Introduce el titulo del post"
+            />
+            @if (titulo?.invalid && titulo?.touched) {
+            <div class="invalid-feedback">
+              @if (titulo?.errors?.['required']) {
+                <span>El titulo es obligatorio.</span>
+              }
+              @if (titulo?.errors?.['minlength']) {
+                <span>El titulo debe tener al menos 3 caracteres.</span>
+              }
+              @if (titulo?.errors?.['maxlength']) {
+                <span>El titulo no puede superar 200 caracteres.</span>
+              }
+            </div>
+            }
+          </div>
+
+          <!-- Contenido -->
+          <div class="mb-4">
+            <label for="contenido" class="form-label">Contenido <span class="text-danger">*</span></label>
+            <textarea
+              class="form-control"
+              [class.is-invalid]="contenido?.invalid && contenido?.touched"
+              [class.is-valid]="contenido?.valid && contenido?.touched"
+              id="contenido"
+              formControlName="contenido"
+              rows="8"
+              placeholder="Escribe el contenido del post"
+            ></textarea>
+            @if (contenido?.invalid && contenido?.touched) {
+            <div class="invalid-feedback">
+              @if (contenido?.errors?.['required']) {
+                <span>El contenido es obligatorio.</span>
+              }
+              @if (contenido?.errors?.['minlength']) {
+                <span>El contenido debe tener al menos 10 caracteres.</span>
+              }
+            </div>
+            }
+          </div>
+
+          <!-- Etiquetas -->
+          <div class="mb-4">
+            <label for="etiquetas" class="form-label">Etiquetas</label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="etiquetas?.invalid && etiquetas?.touched"
+              [class.is-valid]="etiquetas?.valid && etiquetas?.touched"
+              id="etiquetas"
+              formControlName="etiquetas"
+              placeholder="Etiquetas separadas por comas"
+            />
+            @if (etiquetas?.invalid && etiquetas?.touched) {
+            <div class="invalid-feedback">
+              @if (etiquetas?.errors?.['maxlength']) {
+                <span>Las etiquetas no pueden superar 100 caracteres.</span>
+              }
+            </div>
+            }
+            <small class="form-text text-muted">Ejemplo: angular, typescript, web</small>
+          </div>
+
+          <!-- Publico -->
+          <div class="mb-4 form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="publico"
+              formControlName="publico"
+            />
+            <label class="form-check-label" for="publico">
+              Hacer publico
+            </label>
+            <small class="form-text text-muted d-block">Si está marcado, el post será visible para todos los usuarios</small>
+          </div>
+
+          <!-- Botones -->
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <a [routerLink]="['/tablon/plist']" class="btn btn-outline-secondary">
+              <i class="bi bi-arrow-left me-2"></i>Cancelar
+            </a>
+            <button 
+              type="submit" 
+              class="btn btn-primary"
+              [disabled]="submitting || tablonForm.invalid"
+            >
+              @if (submitting) {
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              }
+              @if (!submitting) {
+                <i class="bi bi-plus-circle me-2"></i>
+              }
+              Crear Post
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

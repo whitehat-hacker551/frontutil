@@ -80,6 +80,56 @@
             <small class="form-text text-muted">Opcional: indica cuándo esperas comprar este item</small>
           </div>
 
+          <!-- Precio -->
+          <div class="mb-4">
+            <label for="precio" class="form-label">Precio Estimado (€)</label>
+            <input
+              type="number"
+              class="form-control"
+              [class.is-invalid]="precio?.invalid && precio?.touched"
+              [class.is-valid]="precio?.valid && precio?.touched"
+              id="precio"
+              formControlName="precio"
+              step="0.01"
+              min="0"
+              placeholder="0.00"
+            />
+            @if (precio?.invalid && precio?.touched) {
+            <div class="invalid-feedback">
+              @if (precio?.errors?.['min']) {
+                <span>El precio no puede ser negativo.</span>
+              }
+            </div>
+            }
+            <small class="form-text text-muted">Opcional: precio estimado del producto</small>
+          </div>
+
+          <!-- Cantidad -->
+          <div class="mb-4">
+            <label for="cantidad" class="form-label">Cantidad <span class="text-danger">*</span></label>
+            <input
+              type="number"
+              class="form-control"
+              [class.is-invalid]="cantidad?.invalid && cantidad?.touched"
+              [class.is-valid]="cantidad?.valid && cantidad?.touched"
+              id="cantidad"
+              formControlName="cantidad"
+              min="1"
+              placeholder="1"
+            />
+            @if (cantidad?.invalid && cantidad?.touched) {
+            <div class="invalid-feedback">
+              @if (cantidad?.errors?.['required']) {
+                <span>La cantidad es obligatoria.</span>
+              }
+              @if (cantidad?.errors?.['min']) {
+                <span>La cantidad debe ser al menos 1.</span>
+              }
+            </div>
+            }
+            <small class="form-text text-muted">Número de unidades del producto</small>
+          </div>
+
           <!-- Publicado -->
           <div class="mb-4 form-check">
             <input

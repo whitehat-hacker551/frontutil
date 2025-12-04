@@ -1,0 +1,29 @@
+.book-card {
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(247, 249, 255, 0.9));
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.badge-wrapper .badge {
+  background-color: #e8eaf6;
+  color: #3949ab;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.badge-wrapper.highlight .badge {
+  background: linear-gradient(120deg, #ffeb3b, #ffc107);
+  color: #5c3d00;
+}
+
+.rating {
+  color: #f7b500;
+  font-size: 1.05rem;
+}
+
+.rating .bi {
+  margin-left: 0.1rem;
+}

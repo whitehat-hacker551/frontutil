@@ -1,0 +1,95 @@
+/* Estilo base para el contenedor de la tarjeta */
+.movie-card {
+  display: flex; /* Para poner la portada y los detalles uno al lado del otro */
+  max-width: 700px;
+  margin: 20px auto; /* Centrar y separar las tarjetas */
+  border: 1px solid #ccc; /* Borde sutil */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+  background-color: #fff;
+  overflow: hidden; /* Asegura que el contenido respete los bordes */
+}
+
+/* Estilos de la portada */
+.movie-cover {
+  flex: 0 0 200px; /* Ancho fijo para la imagen */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Estilos para el pie de la imagen (botones Trailer/Sinopsis) */
+.cover-footer {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.cover-footer button {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro transparente */
+  color: white;
+  font-weight: bold;
+}
+
+/* Estilos de los detalles */
+.movie-details {
+  flex-grow: 1; /* Ocupa el espacio restante */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Para empujar el botón "Ver más" hacia abajo */
+}
+
+.movie-title {
+  color: #333;
+  margin-top: 0;
+  font-size: 1.8em;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.movie-data {
+  color: #555;
+  font-style: italic;
+}
+
+.movie-rating {
+  margin: 15px 0;
+  font-size: 1.1em;
+  color: gold; /* Color para las estrellas */
+  font-weight: bold;
+}
+
+.read-more-btn {
+  /* Estilo similar al botón rojo de la imagen de la película */
+  padding: 10px 15px;
+  background-color: #e63946; /* Rojo vibrante */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-top: 20px; /* Separación del contenido de arriba */
+}
+
+.read-more-btn:hover {
+  background-color: #d62839;
+}
+
+.thumb i {
+	width: 200px;
+	height: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 44px;
+	border-radius: 8px;
+	border:1px solid rgba(0,0,0,0.06);
+	background:#f8f9fa;
+	color:#111;
+}

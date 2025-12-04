@@ -1,0 +1,24 @@
+<div class="movie-card">
+  <div class="movie-cover">
+    <div class="thumb me-3" aria-hidden>
+      <i class="bi bi-camera-reels-fill" aria-hidden="true"></i>
+    </div>
+    <div class="cover-footer">
+      <button class="trailer-btn"><i class="bi bi-play"></i> Trailer</button>
+      <button class="synopsis-btn"><i class="bi bi-journal-text blog-icon me-2" aria-hidden="true"></i> Sinopsis</button>
+    </div>
+  </div>
+
+  <div class="movie-details">
+    <h3 class="movie-title">{{ movie.nombre }}</h3>
+    <span class="movie-data"><strong>Género:</strong> {{ movie.genero }}</span>
+    <span class="movie-data"><strong>Año:</strong> {{ movie.anyo }}</span>
+    <span class="movie-data"><strong>Director:</strong> {{ movie.director }}</span>
+    
+    <div class="movie-rating">
+      <span class="rating-value">⭐️ {{ movie.puntuacion }} / 100</span>
+    </div>
+    
+    <button class="read-more-btn">Ver más detalles</button>
+  </div>
+</div>

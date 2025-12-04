@@ -1,0 +1,13 @@
+<div class="front-view-post d-flex flex-column flex-md-row align-items-start">
+  <div class="content flex-fill">
+    <h1 class="title" style="padding-bottom: 15px;">{{ oZanon?.titulo }}</h1>
+
+    <div style="padding-top: 15px;">
+      <a [routerLink]="['/zanon/post', oZanon?.id]" class="btn btn-sm btn-outline-primary">Leer</a>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <small class="text-muted me-3">Publicado el {{ oZanon?.fechaCreacion }}</small>
+    </div>
+  </div>
+</div>

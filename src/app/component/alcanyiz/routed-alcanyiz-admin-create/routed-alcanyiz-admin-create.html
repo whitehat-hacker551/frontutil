@@ -1,0 +1,96 @@
+<div class="container my-4 new-form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-card">
+        <header class="form-header mb-4">
+          <h1 class="">Crear nueva pregunta</h1>
+          <p class="small">Completa los campos para crear una pregunta</p>
+        </header>
+
+        @if (error) {
+        <div class="alert alert-danger" role="alert">
+          <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+        </div>
+        }
+
+  <form class="create-form" [formGroup]="questionForm" (ngSubmit)="onSubmit()" novalidate>
+          <!-- Pregunta -->
+          <div class="form-field mb-4">
+            <label for="question" class="form-label">Título <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="question?.invalid && question?.touched"
+              [class.is-valid]="question?.valid && question?.touched"
+              id="question"
+              formControlName="question"
+              placeholder="Introduce el título de la pregunta"
+            />
+            @if (question?.invalid && question?.touched) {
+            <div class="invalid-feedback">
+              @if (question?.errors?.['required']) {
+                <span>El título es obligatorio.</span>
+              }
+              @if (question?.errors?.['minlength']) {
+                <span>El título debe tener al menos 3 caracteres.</span>
+              }
+              @if (question?.errors?.['maxlength']) {
+                <span>El título no puede superar 200 caracteres.</span>
+              }
+            </div>
+            }
+          </div>
+
+            <!-- Respuestas -->
+          <div class="form-field mb-3">
+            <label class="form-label">Respuesta 1 <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" formControlName="answer1" required/>
+          </div>
+          <div class="form-field mb-3">
+            <label class="form-label">Respuesta 2 <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" formControlName="answer2" required/>
+          </div>
+          <div class="form-field mb-3">
+            <label class="form-label">Respuesta 3 <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" formControlName="answer3" required/>
+          </div>
+          <div class="form-field mb-3">
+            <label class="form-label">Respuesta 4 <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" formControlName="answer4" required/>
+          </div>
+
+          <!-- Correcta -->
+          <div class="form-field mb-4">
+            <label class="form-label">Respuesta correcta</label>
+            <select class="form-select" formControlName="correct">
+              <option style="color: white; background-color: #0b1220;" [value]="1">1</option>
+              <option style="color: white; background-color: #0b1220;" [value]="2">2</option>
+              <option style="color: white; background-color: #0b1220;" [value]="3">3</option>
+              <option style="color: white; background-color: #0b1220;" class="option-select" [value]="4">4</option>
+            </select>
+          </div>
+
+          <!-- Botones -->
+          <div class="form-actions d-flex justify-content-between align-items-center mt-4">
+            <a [routerLink]="['/alcanyiz/questionlist']" class="btn-cancelar btn-outline-secondary">
+              <i class="bi bi-arrow-left me-2"></i>Cancelar
+            </a>
+            <button
+              type="submit"
+              class="btn-enviar btn-primary"
+              [disabled]="submitting || questionForm.invalid"
+            >
+              @if (submitting) {
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              }
+              @if (!submitting) {
+                <i class="bi bi-plus-circle me-2"></i>
+              }
+              Crear Pregunta
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

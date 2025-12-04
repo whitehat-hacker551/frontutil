@@ -1,0 +1,51 @@
+<div class="container my-3 front-plist">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3">
+    <div class="d-flex align-items-center">
+      <h1 class="h4 mb-0">
+        <i class="bi bi-list-check task-icon me-2" aria-hidden="true"></i>
+        Tareas Pendientes - To-Do List
+      </h1>
+    </div>
+
+    <div class="d-flex align-items-center mt-2 mt-md-0">
+      <a
+        class="btn btn-outline-secondary btn-sm me-3 d-none d-md-inline-flex align-items-center"
+        href="/palomares/plist"
+        title="Mantenimiento de tareas"
+      >
+        <!-- gear icon -->
+        <i class="bi bi-gear-fill me-2" aria-hidden="true"></i>
+        Mantenimiento
+      </a>
+      <!-- small screens: compact maintenance icon-only button -->
+      <a
+        class="btn btn-outline-secondary btn-sm d-inline-flex d-md-none align-items-center"
+        href="/palomares/plist"
+        title="Mantenimiento"
+      >
+        <i class="bi bi-gear-fill" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="list">
+    @for (oPalomares of oPage?.content; track oPalomares.id ) {
+    <div class="post-row mt-5">
+      <div class="post-item">
+        <app-unrouted-user-view2 [oPalomares]="oPalomares"> </app-unrouted-user-view2>
+      </div>
+    </div>
+    }
+  </div>
+
+  <div class="d-flex justify-content-center mt-5">
+    
+      <app-paginacion
+        [numPage]="numPage"
+        [numPages]="oPage?.totalPages || 1"
+        (pageChange)="goToPage($event)"
+      >
+      </app-paginacion>
+    </div>
+  
+</div>

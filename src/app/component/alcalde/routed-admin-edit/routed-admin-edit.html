@@ -1,0 +1,92 @@
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <h1 class="h4 mb-0">Editar lectura</h1>
+              <small class="text-muted">Actualiza los datos, estados y reseña</small>
+            </div>
+            <a [routerLink]="['/alcalde/plist']" class="btn btn-outline-secondary btn-sm">Volver</a>
+          </div>
+
+          @if (error) {
+            <div class="alert alert-danger">{{ error }}</div>
+          }
+
+          @if (loading) {
+            <div class="text-center py-5">
+              <div class="spinner-border text-primary"></div>
+            </div>
+          } @else {
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+              <div class="row g-3">
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Titulo</label>
+                  <input formControlName="titulo" type="text" class="form-control" />
+                  @if (titulo?.touched && titulo?.invalid) {
+                    <small class="text-danger">Introduce un título válido</small>
+                  }
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Autor/a</label>
+                  <input formControlName="autor" type="text" class="form-control" />
+                  @if (autor?.touched && autor?.invalid) {
+                    <small class="text-danger">Introduce un autor válido</small>
+                  }
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Genero</label>
+                  <input formControlName="genero" type="text" class="form-control" />
+                  @if (genero?.touched && genero?.invalid) {
+                    <small class="text-danger">Pon el género</small>
+                  }
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Valoración</label>
+                  <input formControlName="valoracion" type="number" min="1" max="5" class="form-control" />
+                  @if (valoracion?.touched && valoracion?.invalid) {
+                    <small class="text-danger">Valoración entre 1 y 5</small>
+                  }
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Fecha de lectura</label>
+                  <input formControlName="fechaLectura" type="date" class="form-control" />
+                  @if (fechaLectura?.touched && fechaLectura?.invalid) {
+                    <small class="text-danger">Selecciona una fecha</small>
+                  }
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Reseña</label>
+                  <textarea formControlName="reseña" rows="4" class="form-control"></textarea>
+                  @if (form.get('reseña')?.touched && form.get('reseña')?.invalid) {
+                    <small class="text-danger">La reseña debe tener mínimo 20 caracteres</small>
+                  }
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="form-check form-switch">
+                    <input formControlName="publicado" class="form-check-input" type="checkbox" id="publicado" />
+                    <label class="form-check-label" for="publicado">Publicado</label>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="form-check form-switch">
+                    <input formControlName="destacado" class="form-check-input" type="checkbox" id="destacado" />
+                    <label class="form-check-label" for="destacado">Destacado en frontal</label>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-end gap-2 mt-4">
+                <button type="button" class="btn btn-outline-secondary" [routerLink]="['/alcalde/plist']">Cancelar</button>
+                <button type="submit" class="btn btn-primary" [disabled]="submitting">
+                  @if (submitting) {<span class="spinner-border spinner-border-sm me-2"></span>}Guardar cambios
+                </button>
+              </div>
+            </form>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

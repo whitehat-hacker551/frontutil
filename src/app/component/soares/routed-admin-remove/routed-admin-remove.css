@@ -1,0 +1,40 @@
+/* Yo doy color rojo de peligro a la cabecera de la tarjeta en la vista de eliminación */
+.card-header {
+    background-color: #dc3545; /* Rojo de peligro */
+}
+
+/* Yo agrego espacio interno a la tarjeta para que el contenido se vea ordenado */
+.card-body {
+    padding: 2rem;
+}
+
+/* Yo pinto las alertas de advertencia en amarillo */
+.alert-warning {
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    color: #856404;
+}
+
+/* Yo pinto los botones de peligro en rojo y les doy efecto al pasar el mouse */
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* Yo cambio el color del botón de peligro cuando pasas el mouse */
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* Yo pinto los botones secundarios de gris y les doy efecto al pasar el mouse */
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+/* Yo cambio el color del botón secundario cuando pasas el mouse */
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+}

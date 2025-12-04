@@ -1,0 +1,24 @@
+/* Estilos para la vista admin unrouted de Soares */
+/* Yo doy fondo blanco y sombra suave al formulario de edición */
+.edit-form {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2rem;
+}
+/* Yo doy fondo gris claro y bordes redondeados a la tarjeta del formulario */
+.form-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 2rem;
+}
+/* Yo centro y hago grande el título principal */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+}
+/* Yo agrego espacio arriba de la tabla */
+table {
+  margin-top: 2rem;
+}

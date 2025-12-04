@@ -1,0 +1,49 @@
+<!-- crear la tabla con oCastanyera -->
+<div class="container my-4 edit-form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-card">
+        <h1 class="my-5">Detalle de post</h1>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="row">{{ oCastanyera?.id }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Título</th>
+              <td>{{ oCastanyera?.titulo }}</td>
+            </tr>
+            <tr>
+              <th scope="col" class="align-middle">Contenido</th>
+              <td>{{ oCastanyera?.contenido }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Etiquetas</th>
+              <td>{{ oCastanyera?.etiquetas }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Creación</th>
+              <td>{{ oCastanyera?.fecha_creacion }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Actualización</th>
+              <td>{{ oCastanyera?.fecha_modificacion }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Visibilidad</th>
+              <td>
+                @if (oCastanyera?.publico) {
+                <span class="badge bg-success">Público</span>
+                } @else {
+                <span class="badge bg-secondary">Privado</span>
+                }
+              </td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

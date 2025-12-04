@@ -1,0 +1,41 @@
+/* Gradiente para el título */
+.gradient-text {
+  background: linear-gradient(45deg, #4e73df, #224abe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Ajustes de fuente para la cabecera de la tabla */
+.text-xs {
+  font-size: 0.75rem !important;
+}
+
+/* Efecto hover suave en las filas */
+.table-hover tbody tr:hover {
+  background-color: #f8f9fc;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Quitar borde inferior de la última fila */
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Badges con colores 'subtle' (Bootstrap 5.3 style si no lo tienes nativo) */
+.bg-success-subtle {
+  background-color: #d1e7dd;
+}
+.bg-danger-subtle {
+  background-color: #f8d7da;
+}
+
+/* Botones de acción flotantes */
+.btn-group .btn:hover {
+  background-color: #e9ecef;
+  transform: translateY(-1px);
+}
+.btn-group .btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}

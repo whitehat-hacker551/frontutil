@@ -1,0 +1,126 @@
+.container{
+  background-color: #0b1220;
+  padding: 200px 80px;
+  border-radius: 20px;
+}
+
+/* Admin question list style — consistent with unrouted admin view */
+h1{
+  color: white;
+}
+
+.generador{
+  background-color: #0c214d;
+}
+
+.alc-list-container{
+	max-width: 1100px;
+	margin: 24px auto;
+	padding: 20px;
+}
+
+.container-table{
+  display: flex;
+  flex-direction: column;
+}
+
+.crear-pregunta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:220px;
+  padding:18px 28px;
+  border-radius:22px;
+  background: rgb(226, 98, 13);
+  color: white;
+  text-decoration:none;
+  font-weight:600;
+  font-size:18px;
+  box-shadow: 0 7px 0px rgb(153, 82, 15);
+}
+
+.crear-pregunta:hover{
+  transform: translateY(7px);
+  box-shadow: none;
+}
+
+.controls-card{
+	max-width: 720px;
+	margin: 12px auto 18px auto;
+	padding: 12px 16px;
+	background: #031d50;
+	border-radius: 12px;
+	box-shadow: 0 10px 30px rgba(2,6,23,0.5);
+	color: #e6eef9;
+}
+
+.alc-table-wrap{
+	display:flex; justify-content:center; margin-top:10px;
+}
+
+.table{
+  width:100%;
+  border-collapse: collapse;
+  color: #e6eef9;
+}
+
+.table th, .table td{
+  padding: 12px 14px;
+  border: 1px solid rgba(107, 107, 107, 0.322); /* subtle white grid */
+}
+
+.table th{
+  text-align: left;
+  color: #bfe6ff;
+  background: rgba(255,255,255,0.02);
+}
+
+select{
+  background-color: aliceblue;
+}
+
+option{
+  background-color: aliceblue;
+}
+
+.generar-preguntas{
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: #3d66b8;
+}
+
+.mensaje-preguntas{
+  font-size: 16px;
+  font-weight: 500;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.pregunta-ok{
+  background-color: green;
+  color: rgb(160, 230, 160);
+}
+
+.pregunta-mal{
+  background-color: rgb(231, 38, 31);
+  color: rgb(230, 160, 160);
+}
+
+.table td{
+  background: rgba(255,255,255,0.01);
+  color: #dff3ff;
+}
+
+.table tr:nth-child(odd) td{ background: rgba(255,255,255,0.008); }
+
+.label-accent{
+  display:inline-block; padding:6px 10px; border-radius:999px; background: linear-gradient(180deg,#ff8a00,#ff6f00); color:#071024; font-weight:700;
+}
+
+@media (max-width:800px){
+	.alc-list-container{ padding:12px }
+	.alc-table th, .alc-table td{ display:block; width:100% }
+}

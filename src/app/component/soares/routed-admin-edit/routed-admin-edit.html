@@ -1,0 +1,77 @@
+<!-- Yo muestro el formulario para editar una pregunta, con validaciones y botones para guardar o volver -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-warning text-dark">
+                    <h3 class="mb-0">Editar Pregunta al Universo #{{ id }}</h3>
+                </div>
+                <div class="card-body" *ngIf="soaresForm">
+                    <form [formGroup]="soaresForm" (ngSubmit)="onSubmit()">
+                        <div class="mb-3">
+                            <label for="id" class="form-label">ID</label>
+                            <input type="text" class="form-control" id="id" formControlName="id" readonly>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="preguntas" class="form-label">Pregunta</label>
+                            <textarea class="form-control" id="preguntas" formControlName="preguntas" rows="3"
+                                placeholder="Escribe tu pregunta inspirada en la neurociencia..."></textarea>
+                            <div *ngIf="soaresForm.get('preguntas')?.invalid && (soaresForm.get('preguntas')?.dirty || soaresForm.get('preguntas')?.touched)"
+                                class="text-danger mt-1">
+                                <div *ngIf="soaresForm.get('preguntas')?.errors?.['required']">
+                                    La pregunta es obligatoria.
+                                </div>
+                                <div *ngIf="soaresForm.get('preguntas')?.errors?.['minlength']">
+                                    La pregunta debe tener al menos 3 caracteres.
+                                </div>
+                                <div *ngIf="soaresForm.get('preguntas')?.errors?.['maxlength']">
+                                    La pregunta no puede exceder los 255 caracteres.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="publicacion"
+                                formControlName="publicacion">
+                            <label class="form-check-label" for="publicacion">Publicación (Aprobación Admin)</label>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="fechaCreacion" class="form-label">Fecha de Creación</label>
+                            <input type="text" class="form-control" id="fechaCreacion" formControlName="fechaCreacion"
+                                readonly>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="fechaModificacion" class="form-label">Última Modificación</label>
+                            <input type="text" class="form-control" id="fechaModificacion"
+                                formControlName="fechaModificacion" readonly>
+                        </div>
+
+                        <div *ngIf="error" class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-warning text-dark" [disabled]="soaresForm.invalid">
+                                <i class="bi bi-save"></i> Guardar Cambios
+                            </button>
+                            <a [routerLink]="['/soares/admin/plist']" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Volver al Listado
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-body" *ngIf="!soaresForm && error">
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    <a [routerLink]="['/soares/admin/plist']" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Volver al Listado
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

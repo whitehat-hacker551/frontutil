@@ -1,0 +1,74 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-8 offset-2">
+      
+      <h2 class="mb-4">👁️ Detalle del Registro</h2>
+
+      @if (strResult) {
+        <div class="alert alert-danger">{{ strResult }}</div>
+      }
+
+      @if (oPallas) {
+        <div class="card">
+          
+          <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <span class="fs-5"><strong>ID: {{ oPallas.id }}</strong></span>
+            
+            @if (oPallas.publicado) {
+              <span class="badge bg-success border border-light">Publicado</span>
+            } @else {
+              <span class="badge bg-danger border border-light">No Publicado</span>
+            }
+          </div>
+          
+          <div class="card-body">
+            <h5 class="card-title display-6 mb-3">{{ oPallas.titulo }}</h5>
+            
+            <h6 class="card-subtitle mb-2 text-muted">Contenido:</h6>
+            <p class="card-text p-3 bg-light border rounded">
+              {{ oPallas.contenido }}
+            </p>
+          </div>
+          
+          <div class="card-footer text-muted small">
+            <div class="row">
+              
+              <div class="col-md-6">
+                <strong>📅 Creación:</strong><br>
+                {{ oPallas.fechaCreacion | date:'dd/MM/yyyy HH:mm:ss' }}
+              </div>
+              
+              <div class="col-md-6 text-end">
+                <strong>✏️ Última Modificación:</strong><br>
+                @if (!oPallas.fechaModificacion) {
+                  <span>No modificado nunca</span>
+                } @else {
+                  <span>{{ oPallas.fechaModificacion | date:'dd/MM/yyyy HH:mm:ss' }}</span>
+                }
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 text-center">
+          <button class="btn btn-secondary mx-2" [routerLink]="['/pallas/plist']">
+            ⬅️ Volver a la lista
+          </button>
+          
+          <button class="btn btn-warning mx-2" [routerLink]="['/pallas/edit', oPallas.id]">
+            ✏️ Editar este registro
+          </button>
+        </div>
+
+      } @else if (!strResult) {
+        <div class="text-center my-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+        </div>
+      }
+
+    </div>
+  </div>
+</div>

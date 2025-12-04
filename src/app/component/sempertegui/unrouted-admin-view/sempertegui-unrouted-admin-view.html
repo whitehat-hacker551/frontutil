@@ -1,0 +1,54 @@
+<!-- crear la tabla con movie -->
+<div class="container my-4 edit-form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-card">
+        <h1 class="my-5 text-center">Detalles de la Película</h1>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="row">{{ movie?.id }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Nombre</th>
+              <td>{{ movie?.nombre }}</td>
+            </tr>
+            <tr>
+              <th scope="col" class="align-middle">Género</th>
+              <td>{{ movie?.genero }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Director</th>
+              <td>{{ movie?.director }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Año</th>
+              <td>{{ movie?.anyo }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Puntuación</th>
+              <td>{{ movie?.puntuacion }} / 100 <i class="bi bi-star-fill"></i></td>
+            </tr>
+            <tr>
+              <th scope="col">Creación</th>
+              <td>{{ movie?.fechaCreacion }} <i class="bi bi-clock-fill"></i></td>
+            </tr>
+            <tr>
+              <th scope="col">Actualización</th>
+              <td>{{ movie?.fechaModificacion }}</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      @if(!ocultarBtnVolver){
+        <div class="d-flex justify-content-center">
+          <a href="/sempertegui/plist" class="btn btn-outline-primary">
+            <i class="bi bi-arrow-left me-2"></i> Volver
+          </a>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<!-- crear la tabla con oTablon -->
+<div class="container my-4 edit-form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-card">
+        <h1 class="my-5">Detalle de post</h1>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="row">{{ oTablon?.id }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Título</th>
+              <td>{{ oTablon?.titulo }}</td>
+            </tr>
+            <tr>
+              <th scope="col" class="align-middle">Contenido</th>
+              <td>{{ oTablon?.contenido }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Etiquetas</th>
+              <td>{{ oTablon?.etiquetas }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Publico</th>
+              <td>
+                @if (oTablon?.publico) {
+                  <i class="bi bi-check-circle text-success"></i> Sí
+                } @else {
+                  <i class="bi bi-x-circle text-danger"></i> No
+                }
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">Creación</th>
+              <td>{{ oTablon?.fechaCreacion }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Actualización</th>
+              <td>{{ oTablon?.fechaModificacion }}</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container my-4">
+  <div class="d-flex justify-content-center my-5">
+    <h1>Ideas de la Comunidad</h1>
+  </div>
+  <!-- Toolbar: search / category / order (always visible) -->
+  <div class="d-flex justify-content-between align-items-center my-3 gap-4 toolbar-grid">
+    <!-- left: search -->
+    <div class="toolbar-left d-flex gap-2 align-items-center">
+      <input #searchBox type="search" class="form-control form-control-sm" placeholder="Buscar ideas..." aria-label="Buscar ideas" (input)="onSearch(searchBox.value)" (keyup.enter)="onSearchImmediate(searchBox.value)" />
+    </div>
+
+    <!-- center: pagination -->
+    <div class="toolbar-center d-flex justify-content-center align-items-center">
+      <app-paginacion
+        [numPage]="numPage"
+        [numPages]="oPage?.totalPages || 1"
+        (pageChange)="goToPage($event)"
+      ></app-paginacion>
+    </div>
+
+    <!-- right: rpp + maintenance -->
+    <div class="toolbar-right d-flex align-items-center justify-content-end gap-2">
+      <app-botonera-rpp [numRpp]="numRpp" (rppChange)="onRppChange($event)"></app-botonera-rpp>
+      <a [routerLink]="['/fernandez-idea/admin/plist']" class="btn btn-sm btn-outline-dark maintenance-btn ms-3">
+        <i class="bi bi-tools me-1"></i>Mantenimiento
+      </a>
+    </div>
+  </div>
+
+  <div class="row">
+    @for (oIdea of oPage?.content; track oIdea.id) {
+      @if (oIdea.publico) {
+        <div class="col-12">
+          <app-fernandez-unrouted-user-view [oIdea]="oIdea"></app-fernandez-unrouted-user-view>
+        </div>
+      }
+    }
+  </div>
+
+  @if (oPage && oPage.content && oPage.content.length === 0) {
+    <div class="alert alert-info text-center" role="alert">
+      No hay ideas disponibles en este momento.
+    </div>
+  }
+</div>

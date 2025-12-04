@@ -1,0 +1,35 @@
+<div class="book-card">
+  @if (entry) {
+    <div class="d-flex align-items-start gap-3">
+      <div class="badge-wrapper" [class.highlight]="entry.destacado">
+        <span class="badge">{{ entry.genero }}</span>
+      </div>
+      <div class="flex-grow-1">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <h3 class="h5 mb-0">{{ entry.titulo }}</h3>
+          <span class="rating">
+            @for (star of stars; track star) {
+              <i class="bi" [class.bi-star-fill]="star <= (entry.valoracion || 0)" [class.bi-star]="star > (entry.valoracion || 0)"></i>
+            }
+            <small class="ms-2">{{ entry.valoracion }}/5</small>
+          </span>
+        </div>
+        <p class="text-muted mb-1">{{ entry.autor }} &middot; {{ entry.fechaLectura }}</p>
+        <p class="mb-2">{{ getPreview() }}</p>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <span class="badge" [class.bg-success]="entry.publicado" [class.bg-secondary]="!entry.publicado">
+            {{ entry.publicado ? 'Publicado' : 'Borrador' }}
+          </span>
+          @if (entry.destacado) {
+            <span class="badge bg-warning text-dark">En seleccion</span>
+          }
+          @if (showActions) {
+            <a class="btn btn-outline-primary btn-sm" [routerLink]="['/alcalde/post', entry.id]">
+              <i class="bi bi-bookmark-heart me-2"></i>Ver reseña
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>

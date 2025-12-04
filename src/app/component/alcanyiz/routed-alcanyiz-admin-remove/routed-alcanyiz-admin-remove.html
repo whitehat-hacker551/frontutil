@@ -1,0 +1,42 @@
+<div class="container my-5 remove-post">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+      @if (loading) {
+      <div class="d-flex justify-content-center my-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Cargando...</span>
+        </div>
+      </div>
+      } @if (error) {
+      <div class="alert alert-danger" role="alert">
+        <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+      </div>
+      } @if (!loading && !error && oQuestion) {
+
+      <app-unrouted-alcanyiz-admin-view [oQuestion]="oQuestion"> </app-unrouted-alcanyiz-admin-view>
+
+      <div class="remove-section">
+        <h2 class="h5 mb-3">Confirmar borrado</h2>
+        <p class="mb-4">
+          ¿Seguro que deseas borrar este post? Esta acción no se puede deshacer.
+        </p>
+        <div class="d-flex justify-content-between">
+          <button class="btn-cancel-remove" (click)="cancel()">
+            <i class="bi bi-arrow-left me-2"></i>Cancelar
+          </button>
+          <button class="btn-remove" [disabled]="deleting" (click)="confirmDelete()">
+            @if (deleting) {
+            <span
+              class="spinner-border spinner-border-sm me-2"
+              role="status"
+              aria-hidden="true"
+            ></span>
+            } @if (!deleting) {
+            } Borrar Pregunta
+          </button>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+.container{
+    background-color: pink;
+    padding: 8px;
+    
+    border:solid, 4px, palevioletred;
+}
+
+.btn{
+    color:palevioletred;
+    background:#eee3e8;
+    border-color: palevioletred;
+
+}
+
+h1{
+    color:rgb(156, 51, 86);
+}

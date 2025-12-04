@@ -1,0 +1,19 @@
+*{
+    background-color: pink;
+    padding: 5px;
+    
+}
+
+#contenedor{
+    border:solid 3px palevioletred;
+    border-radius: 5px;
+}
+
+.btn{
+    color:palevioletred;
+
+}
+
+h1{
+    color:rgb(156, 51, 86);
+}

@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-8 offset-2">
+      
+      <h2 class="text-danger mb-4">🗑️ Borrar Nota</h2>
+
+      @if (error) {
+        <div class="alert alert-danger">
+          {{ error }}
+        </div>
+      }
+
+      @if (loading) {
+        <div class="text-center my-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+          <p class="mt-2 text-muted">Cargando datos del registro...</p>
+        </div>
+      }
+
+      @if (!loading && oPallas) {
+        
+        <div class="alert alert-warning">
+          <strong>⚠️ Atención:</strong> ¿Estás seguro de que deseas eliminar este registro permanentemente?
+        </div>
+
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header bg-danger text-white">
+            <strong>ID: {{ oPallas.id }}</strong>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{ oPallas.titulo }}</h4>
+            <p class="card-text">{{ oPallas.contenido }}</p>
+            
+            <hr>
+            
+            <div class="row small text-muted">
+              <div class="col-6">
+                <strong>Publicado:</strong> 
+                @if (oPallas.publicado) {
+                  <span class="badge bg-success">Sí</span>
+                } @else {
+                  <span class="badge bg-secondary">No</span>
+                }
+              </div>
+              <div class="col-6 text-end">
+                <strong>Creado:</strong> {{ oPallas.fechaCreacion | date:'dd/MM/yyyy' }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+          
+          <button class="btn btn-secondary me-md-2" (click)="cancel()">
+            Cancelar / Volver
+          </button>
+          
+          <button class="btn btn-danger" (click)="confirmDelete()" [disabled]="deleting">
+            
+            @if (deleting) {
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Borrando...
+            } @else {
+              Sí, Borrar Nota
+            }
+          </button>
+          
+        </div>
+      }
+
+    </div>
+  </div>
+</div>

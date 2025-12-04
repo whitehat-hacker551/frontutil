@@ -1,0 +1,44 @@
+<div class="container m-5 post-view">
+  <article class="post-card p-5 border rounded shadow-sm">
+    <header class="post-header my-5">
+      <h1 class="post-title">{{ oZanon?.titulo }}</h1>
+    </header>
+
+    <section class="post-content my-5">
+      <i class="bi bi-quote"></i>
+      <pre [innerHTML]="oZanon?.contenido"></pre>
+    </section>
+
+    <section class="post-content my-5">
+      <div>
+        <p style="font-weight: bold;">Duración:</p>
+        <pre [innerHTML]="oZanon?.duracion"></pre>
+      </div>
+      <div>
+        <p style="font-weight: bold;">Dificultad:</p>
+        <pre [innerHTML]="oZanon?.dificultad"></pre>
+      </div>
+      <div>
+        <p>
+          <!-- 
+          Dependiendo de la condición (oZanon?.publico), 
+          si es "true" devuelve el primer resultado, y si es "false" devuelve el segundo 
+          -->
+          {{ oZanon?.publico ? 'Esta rutina es pública' : 'Esta rutina es privada' }}
+        </p>
+      </div>
+    </section>
+
+    <footer class="post-footer my-5 d-flex justify-content-between align-items-center">
+      <div class="post-meta text-muted small">
+        <span class="me-3"><i class="bi bi-calendar3"></i> {{ oZanon?.fechaCreacion }}</span>
+        <span class="me-3"><i class="bi bi-clock"></i> {{ oZanon?.fechaModificacion }}</span>
+      </div>
+      <div class="post-meta text-muted small">
+        <span class="tags"><i class="bi bi-tags"></i> {{ oZanon?.etiquetas }}</span>
+      </div>
+    </footer>
+
+    <a [href]="['/zanon']">VOLVER ATRÁS</a>
+  </article>
+</div>

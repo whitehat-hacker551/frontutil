@@ -1,0 +1,51 @@
+<!-- Creamos la tabla con "oZanon" -->
+<div class="container my-4 edit-form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-card">
+        <h1 class="my-5">DETALLES de la RUTINA</h1>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="row">{{ oZanon?.id }}</th>
+            </tr>
+            <tr>
+              <th scope="col">Título</th>
+              <td>{{ oZanon?.titulo }}</td>
+            </tr>
+            <tr>
+              <th scope="col" class="align-middle">Contenido</th>
+              <td>{{ oZanon?.contenido }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Etiquetas</th>
+              <td>{{ oZanon?.etiquetas }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Duración</th>
+              <td>{{ oZanon?.duracion }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Dificultad</th>
+              <td>{{ oZanon?.dificultad }}</td>
+            </tr>
+            <tr>
+              <th scope="col">¿Es pública?</th>
+              <td>{{ oZanon?.publico }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Creación</th>
+              <td>{{ oZanon?.fechaCreacion }}</td>
+            </tr>
+            <tr>
+              <th scope="col">Actualización</th>
+              <td>{{ oZanon?.fechaModificacion }}</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

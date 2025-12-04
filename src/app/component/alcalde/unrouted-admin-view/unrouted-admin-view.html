@@ -1,0 +1,63 @@
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-9">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="h4 mb-4">Detalle de libro leido</h2>
+          <div class="table-responsive">
+            <table class="table table-sm align-middle">
+              <tbody>
+                <tr>
+                  <th scope="row" class="w-25">ID</th>
+                  <td>{{ entry?.id || '-' }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Título</th>
+                  <td>{{ entry?.titulo }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Autor</th>
+                  <td>{{ entry?.autor }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Género</th>
+                  <td>{{ entry?.genero }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Reseña</th>
+                  <td class="text-break">{{ entry?.['reseña'] }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Valoración</th>
+                  <td>
+                    <span class="badge bg-primary">{{ entry?.valoracion }}/5</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Lectura</th>
+                  <td>{{ entry?.fechaLectura }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Publicación</th>
+                  <td>
+                    <span [class]="entry?.publicado ? 'badge bg-success' : 'badge bg-secondary'">
+                      {{ getPublicadoLabel(entry?.publicado) }}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Seleccion frontal</th>
+                  <td>
+                    <span [class]="entry?.destacado ? 'badge bg-warning text-dark' : 'badge bg-outline-secondary'">
+                      {{ getDestacadoLabel(entry?.destacado) }}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

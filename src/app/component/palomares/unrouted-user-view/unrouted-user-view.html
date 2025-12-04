@@ -1,0 +1,44 @@
+<div class="container m-5 post-view">
+  <article class="post-card p-5 border rounded shadow-sm">
+    <header class="post-header my-5">
+      <div class="d-flex justify-content-between align-items-start">
+        <div class="flex-grow-1">
+          <h1 class="post-title">{{ oPalomares?.titulo }}</h1>
+          <span class="badge bg-info mt-2">{{ oPalomares?.categoria }}</span>
+        </div>
+        <div>
+          @if (oPalomares?.completada) {
+            <span class="badge bg-success fs-6"><i class="bi bi-check-circle me-1"></i>Completada</span>
+          } @else {
+            <span class="badge bg-warning fs-6"><i class="bi bi-clock me-1"></i>Pendiente</span>
+          }
+        </div>
+      </div>
+    </header>
+
+    <section class="post-content my-5">
+      <!-- icono de lista de tareas -->
+      <i class="bi bi-list-check"></i>
+      <p [innerHTML]="oPalomares?.descripcion"></p>
+    </section>
+
+    <footer class="post-footer my-5 d-flex justify-content-between align-items-center">
+      <div class="post-meta text-muted small">
+        <span class="me-3">
+          <i class="bi bi-calendar3"></i>
+          Creada el
+          {{ oPalomares?.fechaCreacion | datetime : 'solofechacompleta' }} a las
+          {{ oPalomares?.fechaCreacion | datetime : 'solohora' }}
+        </span>
+        @if (oPalomares?.fechaModificacion) {
+        <span class="me-3">
+          <i class="bi bi-clock"></i>
+          Modificada el 
+          {{ oPalomares?.fechaModificacion | datetime : 'solofechacompleta' }} a las
+          {{ oPalomares?.fechaModificacion | datetime : 'solohora' }}
+        </span>
+        }
+      </div>
+    </footer>
+  </article>
+</div>

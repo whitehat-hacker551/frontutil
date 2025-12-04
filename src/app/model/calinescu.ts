@@ -26,4 +26,10 @@ export interface ICalinescu {
   
   /** Indica si el item está publicado y visible para los usuarios */
   publicado: boolean
+  
+  /** Precio estimado del producto */
+  precio: number
+  
+  /** Cantidad de unidades a comprar */
+  cantidad: number
 }

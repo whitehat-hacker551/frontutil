@@ -1,0 +1,77 @@
+<!-- Yo muestro la lista de preguntas para el usuario, con controles de búsqueda, paginación y agrupación por pregunta -->
+<div class="container mt-5">
+  <!-- Header -->
+  <div class="header-section mb-5">
+    <div class="header-content">
+      <h1 class="title-main text-center">
+        <i class="bi bi-chat-heart"></i> Preguntas al Universo
+      </h1>
+      <p class="subtitle-main text-center">
+        <span class="subtitle-main text-start">Pollyanna Soares</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Controles de búsqueda y visualización -->
+  <div class="controls-container mb-3">
+    <div class="controls-flex">
+      <div class="search-group">
+        <input type="text" class="form-control search-input" placeholder="Busca una pregunta que resuene contigo..."
+          [(ngModel)]="filter" (keyup.enter)="onFilterChange(filter)" />
+        <button class="btn search-button ms-2" type="button" (click)="onFilterChange(filter)">
+          <i class="bi bi-search"></i> Buscar
+        </button>
+      </div>
+      <div class="actions-group-horizontal">
+        <a [routerLink]="['/soares/admin/plist']" class="btn btn-primary me-2">
+          Administrar
+        </a>
+        <button class="btn btn-new-question" [routerLink]="['/soares/user/new']">
+          <i class="bi bi-plus-circle"></i> Nueva
+        </button>
+        <a [routerLink]="['/soares/user/temas']" class="btn btn-outline-info ms-2">
+          <i class="bi bi-tags"></i> Ver preguntas por tema
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="rpp-bar mb-4">
+    <app-botonera-rpp [numRpp]="numRpp" (rppChange)="onRppChange($event)"></app-botonera-rpp>
+  </div>
+
+  <!-- Lista de Preguntas -->
+  <div class="row">
+    <div class="col-md-12">
+      <div *ngIf="!oPage || oPage.content.length === 0" class="alert alert-info text-center" role="alert">
+        No se encontraron preguntas.
+      </div>
+      <div class="card-grid">
+        <ng-container *ngFor="let group of groupedSoares">
+          <div class="card-question" [class.expanded]="group.expanded">
+            <div class="card-header-question" (mouseenter)="group.expanded = true" (mouseleave)="group.expanded = false"
+              style="cursor:pointer;">
+              <h5 class="question-title mb-0">{{ group.pregunta }}</h5>
+              <span class="ms-auto"><i class="bi"
+                  [ngClass]="group.expanded ? 'bi-chevron-up' : 'bi-chevron-down'"></i></span>
+            </div>
+            <div *ngIf="group.expanded" class="card-body-question">
+              <div *ngFor="let soares of group.items" class="mb-3">
+                <div class="d-flex align-items-center mb-1">
+                  <span *ngIf="soares.publicacion" class="badge bg-success me-2">Publicada</span>
+                  <span *ngIf="!soares.publicacion" class="badge bg-warning text-dark me-2">Pendiente</span>
+                  <span class="date">{{ soares.fechaCreacion }}</span>
+                </div>
+                <div class="question-body">{{ soares.preguntas }}</div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paginación -->
+  <div class="pagination-container">
+    <app-paginacion [numPage]="numPage" [numPages]="numTotalPages" (pageChange)="onPageChange($event)"></app-paginacion>
+  </div>
+</div>

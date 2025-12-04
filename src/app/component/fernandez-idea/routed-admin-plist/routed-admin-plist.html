@@ -1,0 +1,135 @@
+<div class="container my-2">
+  <div class="d-flex justify-content-center my-5">
+    <h1>Gestión de Ideas - Administración</h1>
+  </div>
+
+  <div class="d-flex justify-content-center my-3">
+    <a [routerLink]="['/fernandez-idea/admin/new']" class="btn btn-success btn-sm">
+      <i class="bi bi-plus-circle me-2"></i>Crear una nueva Idea
+    </a>
+      <div class="d-flex align-items-center ms-2">
+        <input #bulkAmountInput type="number" min="1" class="form-control form-control-sm w-auto" value="20" aria-label="Número de ideas a generar" />
+        <button class="btn btn-outline-info btn-sm ms-2" (click)="requestBulkCreate(+bulkAmountInput.value)">
+          <i class="bi bi-lightning me-2"></i>Generar ideas fake
+        </button>
+      </div>
+      <!-- Inline warning card for very large bulk requests -->
+      @if (showBulkWarning) {
+        <!-- Modal backdrop -->
+        <div class="modal-backdrop fade show"></div>
+        <!-- Modal dialog (rendered without Bootstrap JS by forcing classes) -->
+        <div class="modal fade show d-block" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="bulkWarningTitle">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="bulkWarningTitle">Advertencia: petición grande</h5>
+                <button type="button" class="btn-close" aria-label="Cerrar" (click)="cancelBulkCreate()"></button>
+              </div>
+              <div class="modal-body">
+                <p>Has solicitado crear <strong>{{ pendingBulkAmount }}</strong> ideas. Este número es muy alto y puede afectar la base de datos y el rendimiento.</p>
+                <p class="mb-0"><small class="text-muted">Si necesitas generar muchos datos para pruebas, considera usar el endpoint bulk en entorno de desarrollo y evitar hacerlo en producción.</small></p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-danger" (click)="bulkCreateIdeas(pendingBulkAmount || 0)">Confirmar creación</button>
+                <button class="btn btn-secondary" (click)="cancelBulkCreate()">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+      @if (isBulkLoading) {
+        <!-- Loading modal (non-dismissible) -->
+        <div class="modal-backdrop fade show"></div>
+        <div class="modal fade show d-block" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="bulkLoadingTitle">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-body text-center py-4">
+                <div class="mb-3">
+                  <div class="spinner-border text-primary" role="status" aria-hidden="true"></div>
+                </div>
+                <h5 id="bulkLoadingTitle">Insertando registros</h5>
+                <p class="mb-0">Por favor espera hasta que termine la creación de registros. Esto puede tardar varios segundos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+  </div>
+
+
+  <div class="d-flex justify-content-between align-items-center my-3 toolbar-grid">
+    <div class="toolbar-left d-flex gap-2 align-items-center">
+      <input #searchBox type="search" class="form-control form-control-sm" placeholder="Buscar ideas..." aria-label="Buscar ideas" (input)="onSearch(searchBox.value)" (keyup.enter)="onSearchImmediate(searchBox.value)" />
+    </div>
+
+    <div class="toolbar-center d-flex justify-content-center align-items-center">
+      <app-paginacion
+        [numPage]="numPage"
+        [numPages]="oPage?.totalPages || 1"
+        (pageChange)="goToPage($event)"
+      ></app-paginacion>
+    </div>
+
+    <div class="toolbar-right d-flex align-items-center justify-content-end gap-2">
+      <app-botonera-rpp [numRpp]="numRpp" (rppChange)="onRppChange($event)"> </app-botonera-rpp>
+      <a [routerLink]="['/fernandez-idea/user/plist']" class="btn btn-outline-primary btn-sm ms-2 maintenance-btn-admin">
+        <i class="bi bi-globe me-1"></i>Ver versión pública
+      </a>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Título</th>
+          <th scope="col">Categoría</th>
+          <th scope="col">Público</th>
+          <th scope="col">Creación</th>
+          <th scope="col">Modificación</th>
+          <th scope="col">Operaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (oIdea of oPage?.content; track oIdea.id ) {
+        <tr>
+          <th scope="row">{{ oIdea.id }}</th>
+          <td>{{ oIdea.titulo }}</td>
+          <td>
+            <span class="badge" 
+              [class.bg-primary]="oIdea.categoria === 'IDEA'"
+              [class.bg-success]="oIdea.categoria === 'MEJORA'"
+              [class.bg-danger]="oIdea.categoria === 'BUG'">
+              {{ oIdea.categoria }}
+            </span>
+          </td>
+          <td>
+            @if (oIdea.publico) {
+              <i class="bi bi-check-circle-fill text-success"></i>
+            } @else {
+              <i class="bi bi-x-circle-fill text-danger"></i>
+            }
+          </td>
+          <td>{{ oIdea.fechaCreacion }}</td>
+          <td>{{ oIdea.fechaModificacion }}</td>
+          <td>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+              <a [routerLink]="['/fernandez-idea/admin/view', oIdea.id]" class="btn btn-outline-primary">
+                <i class="bi bi-eye"></i>
+              </a>
+              <a [routerLink]="['/fernandez-idea/admin/edit', oIdea.id]" class="btn btn-outline-secondary">
+                <i class="bi bi-pencil-square"></i>
+              </a>
+              <a [routerLink]="['/fernandez-idea/admin/remove', oIdea.id]" class="btn btn-outline-danger">
+                <i class="bi bi-trash"></i>
+              </a>
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

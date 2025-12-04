@@ -1,0 +1,9 @@
+.hero {
+  background: linear-gradient(120deg, #1e3a8a, #9333ea);
+  color: #fff;
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+}

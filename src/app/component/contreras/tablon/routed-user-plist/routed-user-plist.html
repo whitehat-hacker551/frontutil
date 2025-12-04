@@ -1,0 +1,52 @@
+<div class="container my-3 front-plist">
+  <button type="button" (click)="volver()" style="background-color: #b794f4; color: #fff; border: none; padding: 0.5rem 1.2rem; font-weight: 600;">Volver</button>
+  <br><br>
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3">
+    <div class="d-flex align-items-center">
+      <h1 class="h4 mb-0">
+        <i class="bi bi-journal-text blog-icon me-2" aria-hidden="true"></i>
+        Bienvenido/a a mi Tablón en DAWsiàs Frontutil
+      </h1>
+    </div>
+
+    <div class="d-flex align-items-center mt-2 mt-md-0">
+      <a
+        class="btn btn-outline-secondary btn-sm me-3 d-none d-md-inline-flex align-items-center"
+        href="/tablon/plist"
+        title="Mantenimiento del tablón"
+      >
+        <!-- gear icon -->
+        <i class="bi bi-gear-fill me-2" aria-hidden="true"></i>
+        Mantenimiento
+      </a>
+      <!-- small screens: compact maintenance icon-only button -->
+      <a
+        class="btn btn-outline-secondary btn-sm d-inline-flex d-md-none align-items-center"
+        href="/tablon/plist"
+        title="Mantenimiento"
+      >
+      </a>
+    </div>
+  </div>
+
+  <div class="list">
+    @for (oTablon of oPage?.content; track oTablon.id ) {
+    <div class="post-row mt-5">
+      <div class="post-item">
+        <app-unrouted-user-view2 [oTablon]="oTablon"> </app-unrouted-user-view2>
+      </div>
+    </div>
+    }
+  </div>
+
+  <div class="d-flex justify-content-center mt-5">
+    
+      <app-paginacion
+        [numPage]="numPage"
+        [numPages]="oPage?.totalPages || 1"
+        (pageChange)="goToPage($event)"
+      >
+      </app-paginacion>
+    </div>
+  
+</div>

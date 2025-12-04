@@ -1,0 +1,292 @@
+/* Yo doy forma y tamaño a los botones de acción en la tabla de administración */
+.btn-group .btn-action,
+.btn-group .btn-view {
+  border-radius: 6px !important;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-right: 6px;
+}
+/* Yo quito el margen derecho al último botón de acción */
+.btn-group .btn-action:last-child {
+  margin-right: 0;
+}
+/* Yo organizo los controles de administración con flexbox y espacio */
+.admin-controls {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+/* Yo agrupo los controles de generación de datos */
+.generate-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+/* Yo centro y limito el ancho del contenido principal en la página */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Yo doy estilo y color al encabezado de la vista de administración */
+.header-admin {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #4a4e69 0%, #22223b 100%);
+  border-radius: 15px;
+  color: white;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Yo hago grande y destacado el título del encabezado */
+.header-admin h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+/* Yo hago el texto del encabezado más suave y pequeño */
+.header-admin p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+/* Yo pinto los botones de éxito en verde y les doy efecto al pasar el mouse */
+.btn-success {
+  background-color: #06d6a0;
+  border-color: #06d6a0;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #05b385;
+  border-color: #05b385;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+}
+
+.table-responsive {
+  margin-top: 20px;
+}
+
+.table {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.table thead th {
+  background-color: #9a8c98;
+  color: #22223b;
+  font-weight: 600;
+  vertical-align: middle;
+  border-bottom: 2px solid #c9ada7;
+  cursor: pointer;
+  user-select: none;
+}
+
+.table tbody tr:hover {
+  background-color: #f2e9e4;
+}
+
+.table tbody td {
+  vertical-align: middle;
+  color: #22223b;
+}
+
+.btn-action {
+  margin-right: 5px;
+  padding: 5px 10px;
+  font-size: 0.875rem;
+}
+
+.btn-edit {
+  color: #4a4e69;
+  border-color: #4a4e69;
+}
+
+.btn-edit:hover {
+  background-color: #4a4e69;
+  color: white;
+}
+
+.btn-delete {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-delete:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-published {
+  background-color: #06d6a0;
+  color: white;
+}
+
+.status-pending {
+  background-color: #ffc107;
+  color: #22223b;
+}
+
+.status-approved {
+  background-color: #06d6a0;
+  color: white;
+}
+
+.status-rejected {
+  background-color: #dc3545;
+  color: white;
+}
+
+.form-select, .form-control {
+  border-radius: 5px;
+  border-color: #c9ada7;
+}
+
+.input-group-text {
+  background-color: #f2e9e4;
+  border-color: #c9ada7;
+  color: #22223b;
+}
+
+.pagination-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.rpp-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rpp-container label {
+  font-weight: 500;
+  color: #22223b;
+}
+
+.rpp-container select {
+  width: 80px;
+}
+
+.filter-container {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-container input {
+  flex-grow: 1;
+}
+
+.filter-container button {
+  flex-shrink: 0;
+}
+
+.btn-toggle-publish {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.btn-toggle-publish.published {
+  background-color: #06d6a0;
+  color: white;
+  border: 2px solid #06d6a0;
+}
+
+.btn-toggle-publish.published:hover {
+  background-color: #05b385;
+  border-color: #05b385;
+}
+
+.btn-toggle-publish.unpublished {
+  background-color: #f2e9e4;
+  color: #4a4e69;
+  border: 2px solid #4a4e69;
+}
+
+.btn-toggle-publish.unpublished:hover {
+  background-color: #c9ada7;
+  color: #22223b;
+  border-color: #22223b;
+}
+
+.btn-toggle-approve {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.btn-toggle-approve.approved {
+  background-color: #06d6a0;
+  color: white;
+  border: 2px solid #06d6a0;
+}
+
+.btn-toggle-approve.approved:hover {
+  background-color: #05b385;
+  border-color: #05b385;
+}
+
+.btn-toggle-approve.pending {
+  background-color: #ffc107;
+  color: #22223b;
+  border: 2px solid #ffc107;
+}
+
+.btn-toggle-approve.pending:hover {
+  background-color: #e0a800;
+  color: #22223b;
+  border-color: #e0a800;
+}
+
+.btn-toggle-approve.rejected {
+  background-color: #dc3545;
+  color: white;
+  border: 2px solid #dc3545;
+}
+
+.btn-toggle-approve.rejected:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+}

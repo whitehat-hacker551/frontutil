@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DecimalPipe } from '@angular/common';
 import { IPage } from '../../../model/plist';
 import { ICalinescu } from '../../../model/calinescu';
 import { CalinescuService } from '../../../service/calinescu.service';
@@ -19,7 +20,7 @@ import { DatetimePipe } from "../../../pipe/datetime-pipe";
  */
 @Component({
   selector: 'app-routed-admin-plist',
-  imports: [RouterLink, Paginacion, BotoneraRpp, DatetimePipe],
+  imports: [RouterLink, Paginacion, BotoneraRpp, DatetimePipe, DecimalPipe],
   templateUrl: './routed-admin-plist.html',
   styleUrl: './routed-admin-plist.css',
 })
@@ -44,6 +45,8 @@ export class RoutedAdminPlistCalinescu {
   
   /** Mensaje de error si falla la operación de relleno */
   rellenaError: string | null = null;
+  totalGlobal: number = 0;
+  borrandoTodo: boolean = false;
 
   constructor(private oCalinescuService: CalinescuService) { }
 
@@ -51,6 +54,7 @@ export class RoutedAdminPlistCalinescu {
 
   ngOnInit() {
     this.obtenerPagina();
+    this.cargarTotalGlobal();
   }
 
   /**
@@ -109,10 +113,22 @@ export class RoutedAdminPlistCalinescu {
     return false;
   }
 
-  /**
-   * Genera datos de prueba (fake data) en la lista de compras.
-   * Llama al servicio para crear items aleatorios y refresca el listado.
-   */
+  calcularTotal(): number {
+    if (!this.oPage || !this.oPage.content) return 0;
+    return this.oPage.content.reduce((sum, item) => sum + (item.precio || 0), 0);
+  }
+
+  cargarTotalGlobal() {
+    this.oCalinescuService.getTotalPrecios().subscribe({
+      next: (total: number) => {
+        this.totalGlobal = total;
+      },
+      error: (error: HttpErrorResponse) => {
+        console.error('Error al cargar total global:', error);
+      },
+    });
+  }
+
   generarDatosFalsos() {
     this.rellenaOk = null;
     this.rellenaError = null;
@@ -121,11 +137,30 @@ export class RoutedAdminPlistCalinescu {
       next: (count: number) => {
         this.rellenando = false;
         this.rellenaOk = count;
-        this.obtenerPagina(); // refrescamos listado
+        this.obtenerPagina();
+        this.cargarTotalGlobal(); // Actualizar total después de generar datos
       },
       error: (err: HttpErrorResponse) => {
         this.rellenando = false;
         this.rellenaError = 'Error generando datos fake';
+        console.error(err);
+      }
+    });
+  }
+
+  confirmarBorrarTodo() {
+    this.borrandoTodo = true;
+    this.rellenaError = null;
+    this.oCalinescuService.deleteAll().subscribe({
+      next: (count: number) => {
+        this.borrandoTodo = false;
+        this.rellenaOk = 0;
+        this.obtenerPagina();
+        this.cargarTotalGlobal();
+      },
+      error: (err: HttpErrorResponse) => {
+        this.borrandoTodo = false;
+        this.rellenaError = 'Error al borrar todos los elementos';
         console.error(err);
       }
     });

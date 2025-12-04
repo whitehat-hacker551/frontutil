@@ -1,0 +1,62 @@
+
+/* Edit form: dark-blue background, readable typography, subtle accents */
+.edit-form{ background:#0b1220; padding:28px 12px; border-radius:12px }
+.edit-form .form-card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:10px; box-shadow: 0 10px 30px rgba(2,6,23,0.6); color:#e6eef9 }
+.edit-form .form-header{ margin-bottom:12px }
+.form-title{ color:#e6eef9; font-size:20px; margin:0 }
+.form-card .text-muted{ color:rgba(230,238,249,0.7) }
+
+.form-control{ background: rgba(255,255,255,0.02); color:#e6eef9; border:1px solid rgba(255,255,255,0.04); }
+.form-control:focus{ border-color: rgba(30,144,255,0.9); box-shadow: 0 0 0 0.15rem rgba(30,144,255,0.08); }
+
+.invalid-feedback{ color:#ffb0a0 }
+.alert-danger{ background: linear-gradient(180deg, rgba(255,120,110,0.06), rgba(255,120,110,0.03)); color:#ffdfe0; border:1px solid rgba(255,80,60,0.08) }
+
+.btn-primary{ background: linear-gradient(180deg,#1e90ff,#0ea5e9); border:none; color:white }
+.btn-outline-secondary{ color:#d7e9ff; border-color: rgba(255,255,255,0.06) }
+
+.btn-enviar{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:220px;
+  padding:18px 28px;
+  border-radius:22px;
+  background: rgb(226, 98, 13);
+  color: white;
+  text-decoration:none;
+  font-weight:600;
+  font-size:18px;
+  box-shadow: 0 7px 0px rgb(153, 82, 15);
+  border: none;
+}
+
+.btn-enviar:hover{
+  transform: translateY(7px);
+  box-shadow: none;
+}
+
+.btn-cancelar{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:220px;
+  padding:18px 28px;
+  border-radius:22px;
+  background: linear-gradient(180deg,#1e90ff, #0ea5e9);
+  color: white;
+  text-decoration:none;
+  font-weight:600;
+  font-size:18px;
+  box-shadow: 0 7px 0px rgb(17, 90, 163);
+}
+
+.btn-cancelar:hover{
+  transform: translateY(7px);
+  box-shadow: none;
+}
+
+@media (max-width:768px){
+	.edit-form{ padding:16px }
+	.form-card{ padding:12px }
+}

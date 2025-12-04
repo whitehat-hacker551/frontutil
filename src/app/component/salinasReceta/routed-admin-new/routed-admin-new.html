@@ -1,0 +1,115 @@
+<div class="container my-4 new-form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-card">
+        <header class="form-header mb-4">
+          <h1 class="form-title">Crear Nueva Receta</h1>
+          <p class="text-muted small">Completa los campos para crear una nueva receta</p>
+        </header>
+
+        @if (error) {
+        <div class="alert alert-danger" role="alert">
+          <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+        </div>
+        }
+
+        <form [formGroup]="salinasRecetaForm" (ngSubmit)="onSubmit()" novalidate>
+          <!-- Título -->
+          <div class="mb-4">
+            <label for="nombre" class="form-label">Título <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="nombre?.invalid && nombre?.touched"
+              [class.is-valid]="nombre?.valid && nombre?.touched"
+              id="nombre"
+              formControlName="nombre"
+              placeholder="Introduce el nombre de la receta"
+            />
+            @if (nombre?.invalid && nombre?.touched) {
+            <div class="invalid-feedback">
+              @if (nombre?.errors?.['required']) {
+                <span>El nombre es obligatorio.</span>
+              }
+              @if (nombre?.errors?.['minlength']) {
+                <span>El nombre debe tener al menos 3 caracteres.</span>
+              }
+              @if (nombre?.errors?.['maxlength']) {
+                <span>El nombre no puede superar 200 caracteres.</span>
+              }
+            </div>
+            }
+          </div>
+
+           <!-- Ingredientes -->
+          <div class="mb-4">
+            <label for="ingredientes" class="form-label">Ingredientes</label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="ingredientes?.invalid && ingredientes?.touched"
+              [class.is-valid]="ingredientes?.valid && ingredientes?.touched"
+              id="ingredientes"
+              formControlName="ingredientes"
+              placeholder="ingredientes separadas por comas"
+            />
+            @if (ingredientes?.invalid && ingredientes?.touched) {
+            <div class="invalid-feedback">
+              @if (ingredientes?.errors?.['maxlength']) {
+                <span>Los ingredientes no pueden superar 100 caracteres.</span>
+              }
+            </div>
+            }
+            <small class="form-text text-muted">Ejemplo: arroz, huevo, salchicha</small>
+          </div>
+
+          <!-- preparacion -->
+          <div class="mb-4">
+            <label for="preparacion" class="form-label">preparación <span class="text-danger">*</span></label>
+            <textarea
+              class="form-control"
+              [class.is-invalid]="preparacion?.invalid && preparacion?.touched"
+              [class.is-valid]="preparacion?.valid && preparacion?.touched"
+              id="preparacion"
+              formControlName="preparacion"
+              rows="8"
+              placeholder="Escribe la preparacion de la receta"
+            ></textarea>
+            @if (preparacion?.invalid && preparacion?.touched) {
+            <div class="invalid-feedback">
+              @if (preparacion?.errors?.['required']) {
+                <span>Los pasos de la preparación son obligatorios.</span>
+              }
+              @if (preparacion?.errors?.['minlength']) {
+                <span>La  preparación debe tener al menos 10 caracteres.</span>
+              }
+            </div>
+            }
+          </div>
+
+         
+
+          <!-- Botones -->
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <a [routerLink]="['/receta/plist']" class="btn btn-outline-secondary">
+              <i class="bi bi-arrow-left me-2"></i>Cancelar
+            </a>
+            <button 
+              type="submit" 
+              class="btn btn-primary"
+              [disabled]="submitting || salinasRecetaForm.invalid"
+            >
+              @if (submitting) {
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              }
+              @if (!submitting) {
+                <i class="bi bi-plus-circle me-2"></i>
+              }
+              Crear Receta
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
