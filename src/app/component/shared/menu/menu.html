@@ -115,7 +115,17 @@
                 </li>
             </ul>
 
-            <a routerLink="/login">Login</a>
+            <div class="d-flex align-items-center ms-3">
+                <a
+                    [routerLink]="['/login']"
+                    class="btn btn-sm btn-outline-primary d-inline-flex align-items-center nav-login-btn"
+                    [class.active]="activeRoute.startsWith('/login')"
+                    title="Acceder"
+                >
+                    <i class="bi bi-person-circle me-2"></i>
+                    <span class="d-none d-lg-inline">Iniciar sesión</span>
+                </a>
+            </div>
         </div>
     </div>
 </nav>

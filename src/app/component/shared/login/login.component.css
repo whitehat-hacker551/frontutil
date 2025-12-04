@@ -1,0 +1,30 @@
+/* Simple, clean styling for login card to match home aesthetics */
+.login-card {
+	border-radius: 12px;
+	background: #ffffff;
+}
+
+.login-card .icon {
+	font-size: 20px;
+}
+
+.login-card .form-control {
+	box-shadow: none;
+	border-radius: 8px;
+}
+
+.login-card .form-control:focus {
+	box-shadow: 0 8px 20px rgba(13, 110, 253, 0.08);
+	border-color: rgba(13, 110, 253, 0.9);
+}
+
+.login-card .btn-primary {
+	border-radius: 10px;
+	padding: 0.65rem 1rem;
+}
+
+@media (max-width: 420px) {
+	.login-card {
+		padding: 1rem;
+	}
+}
