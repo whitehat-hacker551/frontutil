@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { Home } from './component/shared/home/home';
-import { Login } from './component/shared/login/login';
 import { RoutedAdminPlist } from './component/blog/routed-admin-plist/routed-admin-plist';
 import { RoutedAdminView } from './component/blog/routed-admin-view/routed-admin-view';
 import { RoutedUserPlist } from './component/blog/routed-user-plist/routed-user-plist';
@@ -113,7 +112,6 @@ import { RoutedAdminRemoveZanon } from './component/zanon/routed-admin-remove/ro
 
 export const routes: Routes = [
   { path: '', component: Home },
-  { path: 'login', component: Login },
   { path: 'blog', component: RoutedUserPlist },
   { path: 'blog/post/:id', component: RoutedUserView },
   { path: 'blog/plist', component: RoutedAdminPlist },

@@ -16,21 +16,7 @@
                         aria-current="page" href="/blog">Blog</a>
                 </li>
             </ul>
-            
-            <div class="d-flex align-items-center">
-                @if (sessionService.isLoggedIn()) {
-                    <span class="navbar-text me-3">
-                        Sesión activa
-                    </span>
-                    <button class="btn btn-outline-danger btn-sm" (click)="logout()">
-                        Cerrar Sesión
-                    </button>
-                } @else {
-                    <a class="btn btn-outline-primary btn-sm" href="/login">
-                        Iniciar Sesión
-                    </a>
-                }
-            </div>
+
         </div>
     </div>
 </nav>
