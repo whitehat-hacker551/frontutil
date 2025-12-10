@@ -15,24 +15,24 @@ export class Menu {
   oTokenJWT: IJWT | null = null;
 
   constructor(private oRouter: Router, private oSessionService: SessionService) {
-    // obtener la ruta activa a partir del router
     this.oRouter.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.activeRoute = event.url;
       }
     });
     this.isSessionActive = this.oSessionService.isSessionActive();
+    if (this.isSessionActive) {
+      this.oTokenJWT = this.oSessionService.parseJWT(this.oSessionService.getToken()!);
+    }
   }
 
   ngOnInit(): void {
     this.oSessionService.subjectLogin.subscribe(() => {      
-      //ocultar el boton de iniciar sesión
       this.isSessionActive = true;  
       this.oTokenJWT = this.oSessionService.parseJWT(this.oSessionService.getToken()!);
     });
 
     this.oSessionService.subjectLogout.subscribe(() => {
-      // Aquí puedes manejar la lógica que necesites cuando se cierre sesión
       this.isSessionActive = false;      
     });
   }
