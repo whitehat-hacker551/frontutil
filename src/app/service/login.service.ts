@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginType } from '../model/login';
 import { serverURL } from '../environment/environment';
+import { IToken } from '../model/token';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +26,7 @@ export class LoginService {
     return hashHex;
   }
 
-  create(login: Partial<LoginType>): Observable<string> {
-    return this.oHttp.post<string>(`${serverURL}/session/login`, login);
+  create(login: Partial<LoginType>): Observable<IToken> {
+    return this.oHttp.post<IToken>(`${serverURL}/session/login`, login);
   }
 }

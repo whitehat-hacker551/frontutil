@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-center my-5">
+  <div class="card login-card shadow-lg border-1 p-4" style="width: 100%; max-width: 420px">
+    <div class="text-center mb-3">
+      <div
+        class="icon bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center"
+        style="width: 56px; height: 56px"
+      >
+        <i class="bi bi-person-lock fs-4"></i>
+      </div>
+      <h4 class="mt-2 mb-0">Cerrar sesión</h4>
+      <small class="text-muted">¿Estás seguro de que deseas cerrar sesión?</small>
+      <div class="mt-4">
+        <a [routerLink]="['/']" class="btn btn-secondary me-3" title="Cancelar"> Cancelar </a>
+        <button class="btn btn-primary" (click)="onLogout()" title="Cerrar sesión">
+          Cerrar sesión
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

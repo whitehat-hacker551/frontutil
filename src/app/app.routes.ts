@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
-import { Home } from './component/shared/home/home';
 
-import { LoginComponent } from './component/shared/login/login.component'
+import { Home } from './component/shared/home/home';
+import { LoginComponent } from './component/shared/login/login.component';
+import { Logout } from './component/shared/logout/logout';
 
 import { RoutedAdminPlist } from './component/blog/routed-admin-plist/routed-admin-plist';
 import { RoutedAdminView } from './component/blog/routed-admin-view/routed-admin-view';
@@ -65,11 +66,11 @@ import { SalinasRoutedAdminView } from './component/salinasReceta/routed-admin-v
 import { SalinasRoutedAdminNew } from './component/salinasReceta/routed-admin-new/routed-admin-new';
 import { SalinasRoutedAdminEdit } from './component/salinasReceta/routed-admin-edit/routed-admin-edit';
 import { SalinasRoutedAdminRemove } from './component/salinasReceta/routed-admin-remove/routed-admin-remove';
-import {PallasPlist} from './component/pallas/pallas-plist/pallas-plist'
-import {PallasView} from './component/pallas/pallas-view/pallas-view'
-import {PallasNew} from './component/pallas/pallas-new/pallas-new'
-import {PallasUpdate} from './component/pallas/pallas-update/pallas-update'
-import {PallasRemove} from './component/pallas/pallas-remove/pallas-remove'
+import { PallasPlist } from './component/pallas/pallas-plist/pallas-plist';
+import { PallasView } from './component/pallas/pallas-view/pallas-view';
+import { PallasNew } from './component/pallas/pallas-new/pallas-new';
+import { PallasUpdate } from './component/pallas/pallas-update/pallas-update';
+import { PallasRemove } from './component/pallas/pallas-remove/pallas-remove';
 import { PallasHome } from './component/pallas/pallas-home/pallas-home';
 import { AlcaldeRoutedAdminPlist } from './component/alcalde/routed-admin-plist/routed-admin-plist';
 import { AlcaldeRoutedAdminView } from './component/alcalde/routed-admin-view/routed-admin-view';
@@ -115,7 +116,7 @@ import { CastanyeraRoutedAdminNew } from './component/castanyera/castanyera-rout
 import { CastanyeraRoutedAdminRemove } from './component/castanyera/castanyera-routed-admin-remove/routed-admin-remove';
 
 //imports Alan
-import { RoutedAlcanyizMenu } from './component/alcanyiz/routed-alcanyiz-menu/routed-alcanyiz-menu'
+import { RoutedAlcanyizMenu } from './component/alcanyiz/routed-alcanyiz-menu/routed-alcanyiz-menu';
 import { RoutedAlcanyizUserView } from './component/alcanyiz/routed-alcanyiz-user-view/routed-alcanyiz-user-view';
 import { RoutedAlcanyizAdminQuestionlist } from './component/alcanyiz/routed-alcanyiz-admin-questionlist/routed-alcanyiz-admin-questionlist';
 import { RoutedAlcanyizAdminView } from './component/alcanyiz/routed-alcanyiz-admin-view/routed-alcanyiz-admin-view';
@@ -143,6 +144,9 @@ import { RoutedAdminRemoveZanon } from './component/zanon/routed-admin-remove/ro
 
 export const routes: Routes = [
   { path: '', component: Home },
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: Logout },
+  //
   { path: 'blog', component: RoutedUserPlist },
   { path: 'blog/post/:id', component: RoutedUserView },
   { path: 'blog/plist', component: RoutedAdminPlist },
@@ -150,6 +154,7 @@ export const routes: Routes = [
   { path: 'blog/new', component: RoutedAdminNew },
   { path: 'blog/edit/:id', component: RoutedAdminEdit },
   { path: 'blog/remove/:id', component: RoutedAdminRemove },
+  //
   { path: 'recurso', component: RoutedUserPlistPavon },
   { path: 'recurso/post/:id', component: RoutedUserViewPavon },
   { path: 'recurso/plist', component: RoutedAdminPlistPavon },
@@ -157,6 +162,7 @@ export const routes: Routes = [
   { path: 'recurso/new', component: RoutedAdminNewPavon },
   { path: 'recurso/edit/:id', component: RoutedAdminEditPavon },
   { path: 'recurso/remove/:id', component: RoutedAdminRemovePavon },
+  //
   { path: 'silvestre', component: RoutedUserPlistSilvestre },
   { path: 'silvestre/post/:id', component: RoutedUserViewSilvestre },
   { path: 'silvestre/plist', component: RoutedAdminPlistSilvestre },
@@ -165,11 +171,9 @@ export const routes: Routes = [
   { path: 'silvestre/edit/:id', component: RoutedAdminEditSilvestre },
   { path: 'silvestre/remove/:id', component: RoutedAdminRemoveSilvestre },
 
-  { path: 'login', component: LoginComponent },
-
   // Vladislav Uski
   // public
-  { path: 'visitas', component: UskiVisitasPage},
+  { path: 'visitas', component: UskiVisitasPage },
   { path: 'visitas/new', component: UskiVisitasNewPage },
   { path: 'visitas/view/:id', component: UskiVisitasViewPage },
   // admin
@@ -192,7 +196,7 @@ export const routes: Routes = [
   { path: 'calinescu/new', component: RoutedAdminNewCalinescu },
   { path: 'calinescu/edit/:id', component: RoutedAdminEditCalinescu },
   { path: 'calinescu/remove/:id', component: RoutedAdminRemoveCalinescu },
-  { path: 'garcia', component: RoutedUserPlistGarcia},
+  { path: 'garcia', component: RoutedUserPlistGarcia },
   { path: 'garcia/post/:id', component: RoutedUserViewGarcia },
   { path: 'garcia/plist', component: RoutedAdminPlistGarcia },
   { path: 'garcia/view/:id', component: RoutedAdminViewGarcia },
@@ -225,7 +229,7 @@ export const routes: Routes = [
   { path: 'palomares/edit/:id', component: RoutedAdminEditPalomares },
   { path: 'palomares/remove/:id', component: RoutedAdminRemovePalomares },
   // Rutas de Joan Salinas
-  { path:'receta', component: SalinasRoutedUserPlist },
+  { path: 'receta', component: SalinasRoutedUserPlist },
   { path: 'receta/post/:id', component: SalinasRoutedUserView },
   { path: 'receta/plist', component: SalinasRoutedAdminPlist },
   { path: 'receta/view/:id', component: SalinasRoutedAdminView },
@@ -255,7 +259,7 @@ export const routes: Routes = [
   { path: 'alcalde/remove/:id', component: AlcaldeRoutedAdminRemove },
   { path: 'sempertegui', component: SemperteguiRoutedUserPlist },
   { path: 'sempertegui/plist', component: SemperteguiRoutedAdminPlist },
-  { path: 'sempertegui/view/:id', component: SemperteguiRoutedAdminView},
+  { path: 'sempertegui/view/:id', component: SemperteguiRoutedAdminView },
   { path: 'sempertegui/edit/:id', component: SemperteguiRoutedAdminEdit },
   { path: 'sempertegui/remove/:id', component: SemperteguiRoutedAdminRemove },
   { path: 'sempertegui/new', component: SemperteguiRoutedAdminNew },
@@ -283,7 +287,7 @@ export const routes: Routes = [
   { path: 'tablon/edit/:id', component: TablonRoutedAdminEdit },
   { path: 'tablon/remove/:id', component: TablonRoutedAdminRemove },
 
-  { path: 'zanon', component: RoutedUserPlistZanon},
+  { path: 'zanon', component: RoutedUserPlistZanon },
   { path: 'zanon/post/:id', component: RoutedUserViewZanon },
   { path: 'zanon/plist', component: RoutedAdminPlistZanon },
   { path: 'zanon/view/:id', component: RoutedAdminViewZanon },
