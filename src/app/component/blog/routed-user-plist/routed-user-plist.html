@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <div class="list">
+  <div class="list" *ngIf="totalElementsCount > 0">
     @for (oBlog of oPage?.content; track oBlog.id ) {
     <div class="post-row mt-5">
       <div class="post-item">
@@ -37,8 +37,7 @@
     }
   </div>
 
-  <div class="d-flex justify-content-center mt-5">
-    
+  <div class="d-flex justify-content-center mt-5" *ngIf="totalElementsCount > 0">
       <app-paginacion
         [numPage]="numPage"
         [numPages]="oPage?.totalPages || 1"
@@ -46,5 +45,15 @@
       >
       </app-paginacion>
     </div>
+
+  <div class="d-flex justify-content-center mt-5" *ngIf="totalElementsCount === 0">
+    <div class="alert alert-secondary text-center w-100" style="max-width:720px">
+      <h5 class="mb-1">No hay posts</h5>
+      <p class="small mb-2">No hay registros públicos para mostrar en este momento.</p>
+      <div>
+  <a href="/blog/plist" class="btn btn-sm btn-outline-secondary me-2">Mantenimiento</a>
+      </div>
+    </div>
+  </div>
   
 </div>
