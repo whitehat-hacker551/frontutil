@@ -5,11 +5,12 @@ import { BlogService } from '../../../service/blog';
 import { IBlog } from '../../../model/blog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 
 @Component({
     selector: 'app-routed-admin-edit',
-    imports: [ReactiveFormsModule, RouterLink, MatDialogModule],
+    imports: [ReactiveFormsModule, RouterLink, MatDialogModule, MatSnackBarModule],
     templateUrl: './routed-admin-edit.html',
     styleUrl: './routed-admin-edit.css',
 })
@@ -19,6 +20,7 @@ export class RoutedAdminEdit implements OnInit {
     private router = inject(Router);
     private blogService = inject(BlogService);
     private dialog = inject(MatDialog);
+    private snackBar = inject(MatSnackBar);
 
     blogForm!: FormGroup;
     blogId: number | null = null;
@@ -95,11 +97,14 @@ export class RoutedAdminEdit implements OnInit {
                                     if (this.blogForm) {
                                             this.blogForm.markAsPristine();
                                     }
+                                    // inform the user
+                                    this.snackBar.open('Post guardado correctamente', 'Cerrar', { duration: 3000 });
                                     this.router.navigate(['/blog/plist']);
             },
             error: (err: HttpErrorResponse) => {
                 this.submitting = false;
                 this.error = 'Error al guardar el post';
+                this.snackBar.open('Error al guardar el post', 'Cerrar', { duration: 4000 });
                 console.error(err);
             },
         });
