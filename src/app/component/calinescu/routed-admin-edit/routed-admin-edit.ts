@@ -160,6 +160,7 @@ export class RoutedAdminEditCalinescu implements OnInit, CanComponentDeactivate 
         this.calinescuService.update(payload).subscribe({
             next: () => {
                 this.submitting = false;
+                this.calinescuForm.markAsPristine(); // Marcar como pristine para evitar el guard
                 this.router.navigate(['/calinescu/plist']);
             },
             error: (err: HttpErrorResponse) => {
