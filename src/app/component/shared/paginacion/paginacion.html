@@ -3,7 +3,7 @@
         <li class="page-item" [class.disabled]="numPage==0">
             <a class="page-link" (click)="goToPage(numPage-1)" href="#">Previous</a>
         </li>
-        @for (strBotonera of oBotonera; track strBotonera ) {
+        @for (strBotonera of oBotonera; track $index ) {
 
         @if (strBotonera=='...'){
         <li class="page-item"><span class="page-link">{{strBotonera}}</span></li>
